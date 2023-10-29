@@ -1,0 +1,2954 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>xmlunit-core</name>
+    </assembly>
+    <members>
+        <member name="T:Org.XmlUnit.Builder.AbstractTransformationBuilder`1">
+            <summary>
+            Base class providing the common logic of the XSLT related builders.
+            </summary>
+            <remarks>
+            Not intended to be used outside of this package.
+            I wish there was a way to say <code>: B</code>.
+            </remarks>
+        </member>
+        <member name="T:Org.XmlUnit.Builder.ITransformationBuilderBase`1">
+            <summary>
+            Holds the common builder methods for XSLT related builders.
+            </summary>
+            <remarks>
+            B is the derived builder interface.
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.ITransformationBuilderBase`1.WithDocumentFunction">
+            <summary>
+            Enables the document() function
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.ITransformationBuilderBase`1.WithExtensionObject(System.String,System.Object)">
+            <summary>
+            Adds an extension object.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.ITransformationBuilderBase`1.WithParameter(System.String,System.String,System.Object)">
+            <summary>
+            Adds a parameter.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.ITransformationBuilderBase`1.WithScripting">
+            <summary>
+            Enables Script Blocks.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.ITransformationBuilderBase`1.WithStylesheet(Org.XmlUnit.ISource)">
+            <summary>
+            Sets the stylesheet to use.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.ITransformationBuilderBase`1.WithXmlResolver(System.Xml.XmlResolver)">
+            <summary>
+            Sets the resolver to use for the document() function and
+            xsi:import/include.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.ITransformationBuilderBase`1.WithoutDocumentFunction">
+            <summary>
+            Disables the document() function
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.ITransformationBuilderBase`1.WithoutScripting">
+            <summary>
+            Disables Script Blocks.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Builder.DiffBuilder">
+            <summary>
+              DiffBuilder to create a Diff instance.
+            </summary>
+            <remarks>
+              <para>
+                Valid inputs for control and test are all objects supported by Input#From(object).
+              </para>
+            </remarks>
+        </member>
+        <member name="T:Org.XmlUnit.Builder.IDifferenceEngineConfigurer`1">
+            <summary>
+            Subset of the configuration options available for a DifferenceEngine.
+            </summary>
+            <remarks>
+              <para>
+                since XMLUnit 2.5.1
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.IDifferenceEngineConfigurer`1.WithNodeMatcher(Org.XmlUnit.Diff.INodeMatcher)">
+            <summary>
+            Sets the strategy for selecting nodes to compare.
+            </summary>
+            <remarks>
+              <para>
+            Example with org.xmlunit.diff.DefaultNodeMatcher:
+            <pre>
+            .WithNodeMatcher(new DefaultNodeMatcher(ElementSelectors.ByNameAndText))
+            </pre>
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.IDifferenceEngineConfigurer`1.WithDifferenceEvaluator(Org.XmlUnit.Diff.DifferenceEvaluator)">
+            <summary>
+            Provide your own custom {@link DifferenceEvaluator} implementation.
+            </summary>
+            <remarks>
+              <para>
+                This overwrites the Default DifferenceEvaluator.
+              </para>
+              <para>
+                If you want use your custom DifferenceEvaluator in
+                combination with the default or another
+                DifferenceEvaluator you should use
+                DifferenceEvaluators#Chain() or
+                DifferenceEvaluators#First() to combine them:
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.IDifferenceEngineConfigurer`1.WithComparisonController(Org.XmlUnit.Diff.ComparisonController)">
+            <summary>
+              Replace the {@link ComparisonControllers#Default} with your own ComparisonController.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.IDifferenceEngineConfigurer`1.WithComparisonListeners(Org.XmlUnit.Diff.ComparisonListener[])">
+            <summary>
+              Registers listeners that are notified of each comparison.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.IDifferenceEngineConfigurer`1.WithDifferenceListeners(Org.XmlUnit.Diff.ComparisonListener[])">
+            <summary>
+              Registers listeners that are notified of each comparison with
+              outcome other than ComparisonResult#EQUAL.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.IDifferenceEngineConfigurer`1.WithNamespaceContext(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Establish a namespace context mapping from URI to prefix
+            that will be used in Comparison.Detail.XPath.
+            </summary>
+            <remarks>
+            Without a namespace context (or with an empty context) the
+            XPath expressions will only use local names for elements and
+            attributes.
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.IDifferenceEngineConfigurer`1.WithAttributeFilter(System.Predicate{System.Xml.XmlAttribute})">
+            <summary>
+              Registers a filter for attributes.
+            </summary>
+            <remarks>
+              <para>
+            Only attributes for which the predicate returns true are
+            part of the comparison.  By default all attributes are
+            considered.
+              </para>
+              <para>
+            The "special" namespace, namespace-location and
+            schema-instance-type attributes can not be ignored this way.
+            If you want to suppress comparison of them you'll need to
+            implement <see cref="T:Org.XmlUnit.Diff.DifferenceEvaluator"/>
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.IDifferenceEngineConfigurer`1.WithNodeFilter(System.Predicate{System.Xml.XmlNode})">
+            <summary>
+              Registers a filter for nodes.
+            </summary>
+            <remarks>
+              <para>
+            Only nodes for which the predicate returns true are part
+            of the comparison.  By default nodes that are neither
+            document types nor XML declarations are considered.
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.IDifferenceEngineConfigurer`1.WithComparisonFormatter(Org.XmlUnit.Diff.IComparisonFormatter)">
+            <summary>
+            Sets a non-default formatter for the differences found.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.DiffBuilder.#ctor(Org.XmlUnit.ISource)">
+            <summary>
+              Create a DiffBuilder instance.
+            </summary>
+            <param name="controlSource">controlSource the expected reference Result.</param>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.DiffBuilder.Compare(System.Object)">
+            <summary>
+              Create a DiffBuilder from all kind of types supported by Input#From(object).
+            </summary>
+            <param name="control">the expected reference document.</param>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.DiffBuilder.WithTest(System.Object)">
+            <summary>
+              Set the Test-Source from all kind of types supported by Input#From(object).
+            </summary>
+            <param name="test">the test document which must be compared with the control document.</param>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.DiffBuilder.IgnoreWhitespace">
+            <summary>
+              Ignore whitespace by removing all empty text nodes and trimming the non-empty ones.
+            </summary>
+            <remarks>
+              <para>
+            If you only want to remove text nodes consisting solely of
+            whitespace (AKA element content whitespace) but leave all
+            other text nodes alone you should use
+            ignoreElementContentWhitespace instead.
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.DiffBuilder.IgnoreElementContentWhitespace">
+            <summary>
+            Ignore element content whitespace by removing all text
+            nodes solely consisting of whitespace.
+            </summary>
+            <remarks>
+              <para>
+            since XMLUnit 2.6.0
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.DiffBuilder.NormalizeWhitespace">
+            <summary>
+              Normalize Text-Elements by removing all empty text nodes and normalizing the non-empty ones.
+            </summary>
+            <remarks>
+              <para>
+                "normalized" in this context means all whitespace
+                characters are replaced by space characters and
+                consecutive whitespace characters are collapsed.
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.DiffBuilder.IgnoreComments">
+            <summary>
+            Will remove all comment-Tags "&lt;!-- Comment --&gt;" from
+            test- and control-XML before comparing.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.DiffBuilder.IgnoreCommentsUsingXSLTVersion(System.String)">
+            <summary>
+            Will remove all comment-Tags "&lt;!-- Comment --&gt;" from
+            test- and control-XML before comparing.
+            </summary>
+            <remarks>
+              <para>
+                since XMLUnit 2.5.0
+              </para>
+            </remarks>
+            <param name="xsltVersion">use this version for the stylesheet</param>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.DiffBuilder.WithNodeMatcher(Org.XmlUnit.Diff.INodeMatcher)">
+            <summary>
+            Sets the strategy for selecting nodes to compare.
+            </summary>
+            <remarks>
+              <para>
+            Example with org.xmlunit.diff.DefaultNodeMatcher:
+            <pre>
+            .WithNodeMatcher(new DefaultNodeMatcher(ElementSelectors.ByNameAndText))
+            </pre>
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.DiffBuilder.WithDifferenceEvaluator(Org.XmlUnit.Diff.DifferenceEvaluator)">
+            <summary>
+            Provide your own custom {@link DifferenceEvaluator} implementation.
+            </summary>
+            <remarks>
+              <para>
+                This overwrites the Default DifferenceEvaluator.
+              </para>
+              <para>
+                If you want use your custom DifferenceEvaluator in
+                combination with the default or another
+                DifferenceEvaluator you should use
+                DifferenceEvaluators#Chain() or
+                DifferenceEvaluators#First() to combine them:
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.DiffBuilder.WithComparisonController(Org.XmlUnit.Diff.ComparisonController)">
+            <summary>
+              Replace the {@link ComparisonControllers#Default} with your own ComparisonController.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.DiffBuilder.WithComparisonListeners(Org.XmlUnit.Diff.ComparisonListener[])">
+            <summary>
+              Registers listeners that are notified of each comparison.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.DiffBuilder.WithDifferenceListeners(Org.XmlUnit.Diff.ComparisonListener[])">
+            <summary>
+              Registers listeners that are notified of each comparison with
+              outcome other than ComparisonResult#EQUAL.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.DiffBuilder.WithAttributeFilter(System.Predicate{System.Xml.XmlAttribute})">
+            <summary>
+              Registers a filter for attributes.
+            </summary>
+            <remarks>
+              <para>
+            Only attributes for which the predicate returns true are
+            part of the comparison.  By default all attributes are
+            considered.
+              </para>
+              <para>
+            The "special" namespace, namespace-location and
+            schema-instance-type attributes can not be ignored this way.
+            If you want to suppress comparison of them you'll need to
+            implement <see cref="T:Org.XmlUnit.Diff.DifferenceEvaluator"/>
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.DiffBuilder.WithNodeFilter(System.Predicate{System.Xml.XmlNode})">
+            <summary>
+              Registers a filter for nodes.
+            </summary>
+            <remarks>
+              <para>
+            Only nodes for which the predicate returns true are part
+            of the comparison.  By default nodes that are neither
+            document types nor XML declarations are considered.
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.DiffBuilder.CheckForSimilar">
+            <summary>
+              check test source with the control source for similarity.
+            </summary>
+            <remarks>
+              <para>
+                Example for Similar: The XML node
+                "&lt;a&gt;Text&lt;/a&gt;" and
+                "&lt;a&gt;&lt;![CDATA[Text]]&gt;&lt;/a&gt;" are
+                similar and the Test will not fail.
+              </para>
+              <para>
+                The rating, if a node is similar, will be done by the
+                DifferenceEvaluators#Default.
+              </para>
+              <para>
+                Default is {@link #CheckForIdentical()}.
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.DiffBuilder.CheckForIdentical">
+            <summary>
+              check test source with the control source for identically.
+            </summary>
+            <remarks>
+              <para>
+                This is the Default.
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.DiffBuilder.WithNamespaceContext(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Establish a namespace context mapping from URI to prefix
+            that will be used in Comparison.Detail.XPath.
+            </summary>
+            <remarks>
+            Without a namespace context (or with an empty context) the
+            XPath expressions will only use local names for elements and
+            attributes.
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.DiffBuilder.WithComparisonFormatter(Org.XmlUnit.Diff.IComparisonFormatter)">
+            <summary>
+            Sets a non-default formatter for the differences found.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.DiffBuilder.Build">
+            <summary>
+              Compare the Test-XML (WithTest(Object)) with the
+              Control-XML (Ccompare(Object)) and return the collected
+              differences in a Diff object.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Builder.Input">
+            <summary>
+            Fluent API to create ISource instances.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.Input.FromDocument(System.Xml.XmlDocument)">
+            <summary>
+            Build an ISource from a DOM Document.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.Input.FromNode(System.Xml.XmlNode)">
+            <summary>
+            Build an ISource from a DOM Node.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.Input.FromFile(System.String)">
+            <summary>
+            Build an ISource from a named file.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.Input.FromStream(System.IO.Stream)">
+            <summary>
+            Build an ISource from a stream.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.Input.FromReader(System.IO.TextReader)">
+            <summary>
+            Build an ISource from a reader.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.Input.FromString(System.String)">
+            <summary>
+            Build an ISource from a string.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.Input.FromByteArray(System.Byte[])">
+            <summary>
+            Build an ISource from an array of bytes.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.Input.FromURI(System.String)">
+            <summary>
+            Build an ISource from an URI.
+            <param name="uri">must represent a valid URL</param>
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.Input.FromURI(System.Uri)">
+            <summary>
+            Build an ISource from an URI.
+            <param name="uri">must represent a valid URL</param>
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.Input.ByTransforming(Org.XmlUnit.ISource)">
+            <summary>
+            Build an ISource by XSLT transforming a different ISource.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.Input.ByTransforming(Org.XmlUnit.Builder.Input.IBuilder)">
+            <summary>
+            Build an ISource by XSLT transforming a different ISource.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.Input.FromDocument(System.Xml.Linq.XDocument)">
+            <summary>
+            Build an ISource from a System.Xml.Linq Document.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.Input.FromNode(System.Xml.Linq.XNode)">
+            <summary>
+            Build an ISource from a System.Xml.Linq Node.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.Input.From(System.Object)">
+            <summary>
+            Return the matching Builder for the supported types:
+            ISource, IBuilder, XmlDocument, XmlNode, byte[] (XML as
+            byte[]), string (XML as String) Uri (to an XML-Document),
+            Stream, TextReader, XDocument, XNode
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Builder.Input.IBuilder">
+            <summary>
+            Builder for <see cref="T:Org.XmlUnit.ISource"/>.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.Input.IBuilder.Build">
+            <summary>
+            build the actual ISource instance.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Builder.Input.ITransformationBuilder">
+            <summary>
+            Builds <see cref="T:Org.XmlUnit.ISource"/> by applying an XSLT transformation on a different <see cref="T:Org.XmlUnit.ISource"/>.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.Input.ITransformationBuilder.WithStylesheet(Org.XmlUnit.Builder.Input.IBuilder)">
+            <summary>
+            Sets the stylesheet to use.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Builder.Transform">
+            <summary>
+            Fluent API access to Org.XmlUnit.Transform.Transformation.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.Transform.Source(Org.XmlUnit.ISource)">
+            <summary>
+            Build a transformation for a source document.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Builder.Transform.IBuilder">
+            <summary>
+            Builder for an XSLT transformation.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.Transform.IBuilder.Build">
+            <summary>
+            Create the result of the transformation.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Builder.Transform.ITransformationResult">
+            <summary>
+            Possible ways to obtain output of an XSLT transformation.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.Transform.ITransformationResult.To(System.IO.Stream)">
+            <summary>
+            Output the result to a stream.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.Transform.ITransformationResult.To(System.IO.TextWriter)">
+            <summary>
+            Output the result to a writer.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.Transform.ITransformationResult.To(System.Xml.XmlWriter)">
+            <summary>
+            Output the result to a writer.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.Transform.ITransformationResult.ToString">
+            <summary>
+            Output the result to a string.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Builder.Transform.ITransformationResult.ToDocument">
+            <summary>
+            Output the result to a DOM Document.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.AbstractDifferenceEngine">
+            <summary>
+            Useful base-implementation of some parts of the
+            IDifferenceEngine interface.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.IDifferenceEngine">
+            <summary>
+            XMLUnit's difference engine.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.IDifferenceEngine.Compare(Org.XmlUnit.ISource,Org.XmlUnit.ISource)">
+            <summary>
+            Compares two pieces of XML and invokes the registered listeners.
+            </summary>
+            <param name="control">the control document holding the expected content</param>
+            <param name="test">the document to test</param>
+        </member>
+        <member name="E:Org.XmlUnit.Diff.IDifferenceEngine.ComparisonListener">
+            <summary>
+            Is notified of each comparison.
+            </summary>
+        </member>
+        <member name="E:Org.XmlUnit.Diff.IDifferenceEngine.MatchListener">
+            <summary>
+            Is notified of each comparison with outcome {@link
+            ComparisonResult#EQUAL}.
+            </summary>
+        </member>
+        <member name="E:Org.XmlUnit.Diff.IDifferenceEngine.DifferenceListener">
+            <summary>
+            Is notified of each comparison with
+            outcome other than {@link ComparisonResult#EQUAL}.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.IDifferenceEngine.NodeMatcher">
+            <summary>
+            Sets the strategy for selecting nodes to compare.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.IDifferenceEngine.DifferenceEvaluator">
+            <summary>
+            Evaluates the severity of a difference.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.IDifferenceEngine.ComparisonController">
+            <summary>
+            Determines whether the comparison should stop after given
+            difference has been found.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.IDifferenceEngine.NamespaceContext">
+            <summary>
+            Establish a namespace context mapping from prefix to URI
+            that will be used in Comparison.Detail.XPath.
+            </summary>
+            <remarks>
+            Without a namespace context (or with an empty context) the
+            XPath expressions will only use local names for elements and
+            attributes.
+            </remarks>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.IDifferenceEngine.AttributeFilter">
+            <summary>
+            Sets the optional strategy that decides which attributes to
+            consider and which to ignore during comparison.
+            </summary>
+            <remarks>
+              <para>
+            Only attributes for which the predicate returns true are
+            part of the comparison.  By default all attributes are
+            considered.
+              </para>
+              <para>
+            The "special" namespace, namespace-location and
+            schema-instance-type attributes can not be ignored this way.
+            If you want to suppress comparison of them you'll need to
+            implement <see cref="P:Org.XmlUnit.Diff.IDifferenceEngine.DifferenceEvaluator"/>
+              </para>
+            </remarks>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.IDifferenceEngine.NodeFilter">
+            <summary>
+            Sets the optional strategy that decides which nodes to
+            consider and which to ignore during comparison.
+            </summary>
+            <remarks>
+              <para>
+            Only nodes for which the predicate returns true are part
+            of the comparison.  By default nodes that are neither
+            document types nor XML declarations are considered.
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.AbstractDifferenceEngine.Compare(Org.XmlUnit.ISource,Org.XmlUnit.ISource)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.AbstractDifferenceEngine.Compare(Org.XmlUnit.Diff.Comparison)">
+            <summary>
+            Compares the detail values for object equality, lets the
+            difference evaluator evaluate the result, notifies all
+            listeners and returns the outcome.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.AbstractDifferenceEngine.GetXPath(Org.XmlUnit.Diff.XPathContext)">
+            <summary>
+            Evaluates an XPathContext in a null-safe way
+            </summary>
+            <param name="ctx">the XPath to evaluate</param>
+            <returns>the stringified XPath or null if the XPathContext was null</returns>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.AbstractDifferenceEngine.GetParentXPath(Org.XmlUnit.Diff.XPathContext)">
+            <summary>
+            Returns a string representation of the given XPathContext's parent context.
+            </summary>
+            <param name="ctx">the XPath to evaluate</param>
+            <returns>the stringified XPath of the parent or null if
+            the XPathContext was null</returns>
+        </member>
+        <member name="E:Org.XmlUnit.Diff.AbstractDifferenceEngine.ComparisonListener">
+            <inheritdoc/>
+        </member>
+        <member name="E:Org.XmlUnit.Diff.AbstractDifferenceEngine.MatchListener">
+            <inheritdoc/>
+        </member>
+        <member name="E:Org.XmlUnit.Diff.AbstractDifferenceEngine.DifferenceListener">
+            <inheritdoc/>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.AbstractDifferenceEngine.NodeMatcher">
+            <inheritdoc/>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.AbstractDifferenceEngine.DifferenceEvaluator">
+            <inheritdoc/>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.AbstractDifferenceEngine.ComparisonController">
+            <inheritdoc/>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.AbstractDifferenceEngine.AttributeFilter">
+            <inheritdoc/>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.AbstractDifferenceEngine.NodeFilter">
+            <inheritdoc/>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.AbstractDifferenceEngine.NamespaceContext">
+            <inheritdoc/>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.AbstractDifferenceEngine.ComparisonState">
+            <summary>
+              Encapsulates the current result and a flag that
+              indicates whether comparison should be stopped.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.AbstractDifferenceEngine.ComparisonState.#ctor(Org.XmlUnit.Diff.AbstractDifferenceEngine,System.Boolean,Org.XmlUnit.Diff.ComparisonResult)">
+            <summary>
+            Creates a ComparisonState
+            </summary>
+            <param name="engine">engine used to evaluate comparisons</param>
+            <param name="finished">whether the engine will stop comparing</param>
+            <param name="result">the current result of the comparison process</param>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.AbstractDifferenceEngine.ComparisonState.AndThen(System.Func{Org.XmlUnit.Diff.AbstractDifferenceEngine.ComparisonState})">
+            <summary>
+            May combine the current result with a function that creates a new result.
+            </summary>
+            <param name="newStateProducer">calculates the new state unless the engine was already finished</param>
+            <returns>the old result if the engine is already finished or the result of evaluating the producer</returns>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.AbstractDifferenceEngine.ComparisonState.AndIfTrueThen(System.Boolean,System.Func{Org.XmlUnit.Diff.AbstractDifferenceEngine.ComparisonState})">
+            <summary>
+            May combine the current result with a function that creates a new result.
+            </summary>
+            <param name="newStateProducer">calculates the new state unless the engine was already finished</param>
+            <param name="predicate">whether to actually evaluate the producer</param>
+            <returns>the old result if the engine is already finished or the predicate is false - or the result of evaluating the producer</returns>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.AbstractDifferenceEngine.ComparisonState.AndThen(Org.XmlUnit.Diff.Comparison)">
+            <summary>
+            May combine the current result with evaluating a comparison.
+            </summary>
+            <param name="comp">new state will be obtained by performing the comparison</param>
+            <returns>the old result if the engine is already finished or the result of evaluating the comparison</returns>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.AbstractDifferenceEngine.ComparisonState.AndIfTrueThen(System.Boolean,Org.XmlUnit.Diff.Comparison)">
+            <summary>
+            May combine the current result with evaluating a comparison.
+            </summary>
+            <param name="comp">new state will be obtained by performing the comparison</param>
+            <param name="predicate">whether to actually evaluate the comparison</param>
+            <returns>the old result if the engine is already finished or the predicate is false - or the result of evaluating the comparison</returns>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.AbstractDifferenceEngine.ComparisonState.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.AbstractDifferenceEngine.ComparisonState.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.AbstractDifferenceEngine.ComparisonState.Equals(Org.XmlUnit.Diff.AbstractDifferenceEngine.ComparisonState)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.AbstractDifferenceEngine.ComparisonState.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.ByNameAndTextRecSelector">
+             <summary>
+             ElementSelector that allows two elements to be compared if
+             their name (including namespace URI, if any) and textual
+             content is the same and the same is true for all child
+             elements recursively.
+             </summary>
+            
+             <remarks>
+             This ElementSelector helps with structures nested more deeply
+             but may need to be combined inside a
+             ElementSelectors.ConditionalSelector in order to be useful for
+             the document as a whole.
+             </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ByNameAndTextRecSelector.CanBeCompared(System.Xml.XmlElement,System.Xml.XmlElement)">
+            <inheritdoc cref="T:Org.XmlUnit.Diff.ElementSelector"/>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.ChildNodeXPathContextProvider">
+            <summary>
+            Maps XmlNode to XPathContext by assuming all nodes
+            passed in are child nodes of the same parent node who's
+            XPathContext is provided as argument to the constructor.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ChildNodeXPathContextProvider.#ctor(Org.XmlUnit.Diff.XPathContext,System.Collections.Generic.IEnumerable{System.Xml.XmlNode})">
+            <summary>
+            Creates an instance of ChildNodeXPathContextProvider.
+            </summary>
+            <param name="parentContext">parentContext context of the
+            parent of all Nodes ever expected to be passed in as
+            arguments to Map.  This XPathContext must be "positioned
+            at" the parent element and already know about all its
+            children.</param>
+            <param name="children">all child nodes of the parent in
+            the same order they are known to the XPathContext.</param>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.Comparison">
+            <summary>
+            Details of a single comparison XMLUnit has performed.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.Comparison.#ctor(Org.XmlUnit.Diff.ComparisonType,System.Xml.XmlNode,System.String,System.Object,System.String,System.Xml.XmlNode,System.String,System.Object,System.String)">
+            <summary>
+            Encapsulates a comparison of two parts of the pieces of XML to compare.
+            </summary>
+            <param name="t">the type of comparison</param>
+            <param name="controlTarget">part inside the control document</param>
+            <param name="controlXPath">XPath of the part inside the control document</param>
+            <param name="controlValue">value inside the control document</param>
+            <param name="controlParentXPath">Parent XPath of the part inside the control document</param>
+            <param name="testTarget">part inside the test document</param>
+            <param name="testXPath">XPath of the part inside the test document</param>
+            <param name="testValue">value inside the test document</param>
+            <param name="testParentXPath">Parent XPath of the part inside the test document</param>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.Comparison.ToString(Org.XmlUnit.Diff.IComparisonFormatter)">
+            <summary>
+            Returns a string representation of this comparison using the
+            given IComparisonFormatter.
+            <param name="formatter"> the IComparisonFormatter to use</param>
+            <return>a string representation of this comparison</return>
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.Comparison.ToString">
+            <summary>
+            Returns a string representation of this comparison using
+            DefaultComparisonFormatter.
+            <return>a string representation of this comparison</return>
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.Comparison.Type">
+            <summary>
+            The kind of comparison performed.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.Comparison.ControlDetails">
+            <summary>
+            Details of the control target.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.Comparison.TestDetails">
+            <summary>
+            Details of the test target.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.Comparison.Detail">
+            <summary>
+            The details of a target (usually a representation of an
+            XML node) that took part in the comparison.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.Comparison.Detail.Target">
+            <summary>
+            The actual target.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.Comparison.Detail.XPath">
+            <summary>
+            XPath leading to the target.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.Comparison.Detail.ParentXPath">
+            <summary>
+            XPath leading to the target's parent.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.Comparison.Detail.Value">
+            <summary>
+            The value for comparison found at the current target.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.ComparisonController">
+            <summary>
+            May instruct the difference engine to stop the whole comparison process.
+            </summary>
+            <param name="difference">difference the Difference that is responsible for
+            stopping the comparison process</param>
+            <return>whether to stop the comparison process</return>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.ComparisonControllers">
+            <summary>
+            Controllers used for the base cases.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ComparisonControllers.Default(Org.XmlUnit.Diff.Difference)">
+            <summary>
+              Does not stop the comparison at all.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ComparisonControllers.StopWhenDifferent(Org.XmlUnit.Diff.Difference)">
+            <summary>
+              Makes the comparison stop as soon as the first "real"
+              difference is encountered.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ComparisonControllers.StopWhenSimilar(Org.XmlUnit.Diff.Difference)">
+            <summary>
+              Makes the comparison stop as soon as the first
+              difference is encountered even if it is similar.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.ComparisonListener">
+            <summary>
+            Is notified of comparisions and their results.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.ComparisonResult">
+            <summary>
+            The possible outcomes of a comparision.
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonResult.EQUAL">
+            <summary>
+            The two nodes are the same for the sake of this comparison.
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonResult.SIMILAR">
+            <summary>
+            The two nodes are different but similar enough to satisfy a
+            weak equality constraint
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonResult.DIFFERENT">
+            <summary>
+            The two nodes are different.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.ComparisonType">
+            <summary>
+            The kinds of comparisons XMLUnit performs.
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonType.XML_VERSION">
+            <summary>
+            Do both documents specify the same version in their XML declaration?
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonType.XML_STANDALONE">
+            <summary>
+            Do both documents specify the same standalone declaration
+            in their XML declaration?
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonType.XML_ENCODING">
+            <summary>
+            Do both documents specify the same encoding in their XML
+            declaration?
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonType.HAS_DOCTYPE_DECLARATION">
+            <summary>
+            Do both documents have a DOCTYPE (or neither of each)?
+            </summary>
+            <remarks>
+              <para>
+            This difference is most likely masked by a
+            CHILD_NODELIST_LENGTH difference as the number of children
+            of the document node is tested before the presence of the
+            document type declaration.
+              </para>
+            </remarks>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonType.DOCTYPE_NAME">
+            <summary>
+            If the documents both have DOCTYPEs, compare the names.
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonType.DOCTYPE_PUBLIC_ID">
+            <summary>
+            If the documents both have DOCTYPEs, compare the PUBLIC
+            identifiers.
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonType.DOCTYPE_SYSTEM_ID">
+            <summary>
+            If the documents both have DOCTYPEs, compare the SYSTEM
+            identifiers.
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonType.SCHEMA_LOCATION">
+            <summary>
+            Check whether both documents provide the same values for
+            xsi:schemaLocation (may even be null).
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonType.NO_NAMESPACE_SCHEMA_LOCATION">
+            <summary>
+            Check whether both documents provide the same values for
+            xsi:noNamspaceSchemaLocation (may even be null).
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonType.NODE_TYPE">
+            <summary>
+            Compare the node types.
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonType.NAMESPACE_PREFIX">
+            <summary>
+            Compare the node's namespace prefixes.
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonType.NAMESPACE_URI">
+            <summary>
+            Compare the node's namespace URIs.
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonType.TEXT_VALUE">
+            <summary>
+            Compare content of text nodes, comments, CDATA sections.
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonType.PROCESSING_INSTRUCTION_TARGET">
+            <summary>
+            Compare targets of processing instructions.
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonType.PROCESSING_INSTRUCTION_DATA">
+            <summary>
+            Compare data of processing instructions.
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonType.ELEMENT_TAG_NAME">
+            <summary>
+            Compare element names.
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonType.ATTR_VALUE_EXPLICITLY_SPECIFIED">
+            <summary>
+            Compare explicit/implicit status of attributes.
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonType.ELEMENT_NUM_ATTRIBUTES">
+            <summary>
+            Compare number of attributes.
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonType.ATTR_VALUE">
+            <summary>
+            Compare attribute's value.
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonType.CHILD_NODELIST_LENGTH">
+            <summary>
+            Compare number of child nodes.
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonType.CHILD_NODELIST_SEQUENCE">
+            <summary>
+            Compare order of child nodes.
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonType.CHILD_LOOKUP">
+            <summary>
+            Search for a child node matching a specific child node of the
+            other node.
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Diff.ComparisonType.ATTR_NAME_LOOKUP">
+            <summary>
+            Search for an atribute with a name matching a specific
+            attribute of the other node.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.ComparisonTypes">
+            <summary>
+              Extension methods for ComparisonType
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ComparisonTypes.GetDescription(Org.XmlUnit.Diff.ComparisonType)">
+            <summary>
+            Obtains a textual description of a comparison type.
+            </summary>
+            <param name="type">the comparison type to describe</param>
+            <returns>a textual description of the comparison type</returns>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.DefaultComparisonFormatter">
+            <summary>
+            Formatter methods for a Comparison Object.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.IComparisonFormatter">
+            <summary>
+            Formatter methods for a Comparison Object.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.IComparisonFormatter.GetDescription(Org.XmlUnit.Diff.Comparison)">
+            <summary>
+            Return a short String of the Comparison including the
+            XPath and the shorten value of the effected control and
+            test Node.
+            </summary>
+            <param name="comparison">The Comparison to describe.</param>
+            <return>a short description of the comparison</return>
+            <remarks>
+              <para>
+                 This is used for Diff#ToString().
+              </para>
+              </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.IComparisonFormatter.GetDetails(Org.XmlUnit.Diff.Comparison.Detail,Org.XmlUnit.Diff.ComparisonType,System.Boolean)">
+            <summary>
+            Return the xml node from Detail#Target as formatted String.
+            </summary>
+            <param name="details">The Comparison#ControlDetails or
+            Comparison#TestDetails.</param>
+            <param name="type">The implementation can return different
+            details depending on the ComparisonType.</param>
+            <param name="formatXml">set this to true if the Comparison
+            was generated with DiffBuilder#IgnoreWhitespace.</param>
+            <return>the full xml node</return>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DefaultComparisonFormatter.GetDescription(Org.XmlUnit.Diff.Comparison)">
+            <summary>
+            Return a short String of the Comparison including the
+            XPath and the shorten value of the effected control and
+            test Node.
+            </summary>
+            <param name="comparison">The Comparison to describe.</param>
+            <return>a short description of the comparison</return>
+            <remarks>
+              <para>
+            In general the String will look like "Expected X 'Y' but
+            was 'Z' - comparing A to B" where A and B are the result
+            of invoking GetShortString on the target and XPath of the
+            control and test details of the comparison. A is the
+            description of the comparison and B and C are the control
+            and test values (passed through GetValue) respectively.
+              </para>
+              <para>
+            For missing attributes the string has a slightly different
+            format.
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DefaultComparisonFormatter.GetValue(System.Object,Org.XmlUnit.Diff.ComparisonType)">
+            <summary>
+            May alter the display of a comparison value for
+            GetShortString based on the comparison type.
+            </summary>
+            <remarks>
+            <para>
+            This implementation returns value unless it is a
+            comparison of node types in which case the numeric value
+            (one of the values of the XmlNodeType enum) is mapped to a
+            more useful string.
+            </para>
+            </remarks>
+            <param name="value">the value to display</param>
+            <param name="type">the comparison type</param>
+            <return>the display value</return>
+            since XMLUnit 2.4.0
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DefaultComparisonFormatter.GetShortString(System.Xml.XmlNode,System.String,Org.XmlUnit.Diff.ComparisonType)">
+            <summary>
+            Return a string representation for GetShortString that
+            describes the "thing" that has been compared so users know
+            how to locate it.
+            </summary>
+            <remarks>
+            <para>
+            Examples are "&lt;bar ...&gt; at /foo[1]/bar[1]" for a
+            comparison of elements or "&lt;!-- Comment Text --&gt; at
+            /foo[2]/comment()[1]" for a comment.
+            </para>
+            <para>
+            This implementation dispatches to several AppendX methods
+            based on the comparison type or the type of the node.
+            </para>
+            </remarks>
+            <param name="node">the node to describe</param>
+            <param name="xpath">xpath of the node if applicable</param>
+            <param name="type">the comparison type</param>
+            <return>the formatted result</return>
+            since XMLUnit 2.4.0
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DefaultComparisonFormatter.AppendXPath(System.Text.StringBuilder,System.String)">
+            <summary>
+            Appends the XPath information for GetShortString if present.
+            </summary>
+            <param name="sb">the builder to append to</param>
+            <param name="xpath">the xpath to append, if any</param>
+            since XMLUnit 2.4.0
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DefaultComparisonFormatter.AppendDocumentXmlDeclaration(System.Text.StringBuilder,System.Xml.XmlDeclaration)">
+            <summary>
+            Appends the XML declaration for GetShortString or
+            AppendFullDocumentHeader if it contains non-default
+            values.
+            </summary>
+            <param name="sb">the builder to append to</param>
+            <return>true if the XML declaration has been appended</return>
+            since XMLUnit 2.4.0
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DefaultComparisonFormatter.AppendDocumentElementIndication(System.Text.StringBuilder,System.Xml.XmlDocument)">
+            <summary>
+            Appends a short indication of the document's root element
+            like "&lt;ElementName...&gt;" for GetShortString.
+            </summary>
+            <param name="sb">the builder to append to</param>
+            <param name="doc">the XML document node</param>
+            since XMLUnit 2.4.0
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DefaultComparisonFormatter.AppendDocumentType(System.Text.StringBuilder,System.Xml.XmlDocumentType)">
+            <summary>
+            Appends the XML DOCTYPE for GetShortString or
+            AppendFullDocumentHeader if present.
+            </summary>
+            <param name="sb">the builder to append to</param>
+            <param name="type">the document type</param>
+            <return>true if the DOCTPYE has been appended</return>
+            since XMLUnit 2.4.0
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DefaultComparisonFormatter.AppendProcessingInstruction(System.Text.StringBuilder,System.Xml.XmlProcessingInstruction)">
+            <summary>
+            Formats a processing instruction for GetShortString.
+            </summary>
+            <param name="sb">the builder to append to</param>
+            <param name="instr">the processing instruction</param>
+            since XMLUnit 2.4.0
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DefaultComparisonFormatter.AppendComment(System.Text.StringBuilder,System.Xml.XmlComment)">
+            <summary>
+            Formats a comment for GetShortString.
+            </summary>
+            <param name="sb">the builder to append to</param>
+            <param name="aNode">the comment</param>
+            since XMLUnit 2.4.0
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DefaultComparisonFormatter.AppendText(System.Text.StringBuilder,System.Xml.XmlCharacterData)">
+            <summary>
+            Formats a text or CDATA node for GetShortString.
+            </summary>
+            <param name="sb">the builder to append to</param>
+            <param name="aNode">the text or CDATA node</param>
+            since XMLUnit 2.4.0
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DefaultComparisonFormatter.AppendElement(System.Text.StringBuilder,System.Xml.XmlElement)">
+            <summary>
+            Formats a placeholder for an element for GetShortString.
+            </summary>
+            <param name="sb">the builder to append to</param>
+            <param name="aNode">the element</param>
+            since XMLUnit 2.4.0
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DefaultComparisonFormatter.AppendAttribute(System.Text.StringBuilder,System.Xml.XmlAttribute)">
+            <summary>
+            Formats a placeholder for an attribute for GetShortString.
+            </summary>
+            <param name="sb">the builder to append to</param>
+            <param name="aNode">the attribute</param>
+            since XMLUnit 2.4.0
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DefaultComparisonFormatter.GetDetails(Org.XmlUnit.Diff.Comparison.Detail,Org.XmlUnit.Diff.ComparisonType,System.Boolean)">
+            <summary>
+            Return the xml node from Detail#Target as formatted String.
+            </summary>
+            <param name="details">The Comparison#ControlDetails or
+            Comparison#TestDetails.</param>
+            <param name="type">The implementation can return different
+            details depending on the ComparisonType.</param>
+            <param name="formatXml">set this to true if the Comparison
+            was generated with DiffBuilder#IgnoreWhitespace.</param>
+            <return>the full xml node</return>
+            <remarks>
+              <para>
+            Delegates to GetFullFormattedXml unless the
+            Comparison.Detail's Target is null.
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DefaultComparisonFormatter.GetFullFormattedXml(System.Xml.XmlNode,Org.XmlUnit.Diff.ComparisonType,System.Boolean)">
+            <summary>
+            Formats the node using a format suitable for the node type
+            and comparison.
+            </summary>
+            <remarks>
+            <para>
+            The implementation outputs the document prolog and start
+            element for Document and DocumentType nodes and may elect
+            to format the node's parent element rather than just the
+            node depending on the node and comparison type. It
+            delegates to AppendFullDocumentHeader or
+            GetFormattedNodeXml.
+            </para>
+            </remarks>
+            <param name="node">the node to format</param>
+            <param name="type">the comparison type</param>
+            <param name="formatXml">true if the Comparison was generated with IgnoreWhitespace - this affects the indentation of the generated output</param>
+            <return>the fomatted XML</return>
+            since XMLUnit 2.4.0
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DefaultComparisonFormatter.AppendFullDocumentHeader(System.Text.StringBuilder,System.Xml.XmlDocument)">
+            <summary>
+            Appends the XML declaration and DOCTYPE if present as well
+            as the document's root element for GetFullFormattedXml.
+            </summary>
+            <param name="sb">the builder to append to</param>
+            <param name="doc">the document to format</param>
+            since XMLUnit 2.4.0
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DefaultComparisonFormatter.GetFormattedNodeXml(System.Xml.XmlNode,System.Boolean)">
+            <summary>
+            Formats a node with the help of XmlWriter.
+            </summary>
+            <param name="nodeToConvert">the node to format</param>
+            <param name="formatXml">true if the Comparison was generated with IgnoreWhitespace - this affects the indentation of the generated output</param>
+            <return>the fomatted XML</return>
+            since XMLUnit 2.4.0
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DefaultComparisonFormatter.CreateXmlWriter(System.Text.StringBuilder,System.Int32)">
+            <summary>
+            Create a default Writer to format a XML-Node to a String.
+            </summary>
+            <param name="numberOfBlanksToIndent">the number of spaces
+            which is used for indent the XML-structure</param>
+            <param name="sb">StringBuilder to wrap as writer</param>
+            since XMLUnit 2.4.0
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DefaultComparisonFormatter.NodeType(System.Xml.XmlNodeType)">
+            <summary>
+            Provides a display text for the constant values of the
+            XmlNodeType enum.
+            </summary>
+            <param name="type">the node type</param>
+            <return>the display text</return>
+            since XMLUnit 2.4.0
+        </member>
+        <member name="T:Org.XmlUnit.Diff.ElementSelectors.IConditionalSelectorBuilder">
+            <summary>
+              Allows to build complex ElementSelectors by combining simpler blocks.
+            </summary>
+            <remarks>
+              <para>
+            All When*s are consulted in order and if one returns true
+            then the associated ElementSelector is used.  If all of
+            them return false, the default set up with ElseUse if any
+            is used.
+              </para>
+            </remarks>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.ElementSelectors">
+            <summary>
+            Common ElementSelector implementations.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.Default(System.Xml.XmlElement,System.Xml.XmlElement)">
+            <summary>
+            Always returns true, i.e. each element can be compared to each
+            other element.
+            </summary>
+            <remarks>
+            Generally this means elements will be compared in document
+            order.
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.ByName(System.Xml.XmlElement,System.Xml.XmlElement)">
+            <summary>
+            Elements with the same local name (and namespace URI - if any)
+            can be compared.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.ByNameAndText(System.Xml.XmlElement,System.Xml.XmlElement)">
+            <summary>
+            Elements with the same local name (and namespace URI - if any)
+            and nested text (if any) can be compared.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.ByNameAndAttributes(System.String[])">
+            <summary>
+            Elements with the same local name (and namespace URI - if any)
+            and attribute values for the given attribute names can be
+            compared.
+            </summary>
+            <remarks>Attributes are only searched for in the null
+            namespace.</remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.ByNameAndAttributes(System.Xml.XmlQualifiedName[])">
+            <summary>
+            Elements with the same local name (and namespace URI - if any)
+            and attribute values for the given attribute names can be
+            compared.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.ByNameAndAttributesControlNS(System.String[])">
+            <summary>
+            Elements with the same local name (and namespace URI - if any)
+            and attribute values for the given attribute names can be
+            compared.
+            </summary>
+            <remarks>
+            Namespace URIs of attributes are those of the attributes on
+            the control element or the null namespace if they don't
+            exist.
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.ByNameAndAllAttributes(System.Xml.XmlElement,System.Xml.XmlElement)">
+            <summary>
+            Elements with the same local name (and namespace URI - if any)
+            and attribute values for all attributes can be compared.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.Not(Org.XmlUnit.Diff.ElementSelector)">
+            <summary>
+              Negates another ElementSelector
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.Or(Org.XmlUnit.Diff.ElementSelector[])">
+             <summary>
+               Accepts two elements if at least one of the given ElementSelectors does.
+             </summary>
+             <remarks>
+             <para>There is an important difference between using
+             ElementSelectors#Or to combine multiple ElementSelectors
+             and using DefaultNodeMatcher's constructor with multiple
+             ElementSelectors:</para>
+            
+             <para>Consider ElementSelectors e1 and e2 and
+             two control and test nodes each.  Assume e1 would match the
+             first control node to the second test node and vice versa if used
+             alone, while e2 would match the nodes in order (the first
+             control node to the first test and so on).</para>
+            
+             <para>ElementSelectors#Or creates a combined
+             ElementSelector that is willing to match the first control node to
+             both of the test nodes - and the same for the second control node.
+             Since nodes are compared in order when possible the result will be
+             the same as running e2 alone.</para>
+            
+             <para>DefaultNodeMatcher with two ElementSelectors
+             will consult the ElementSelectors separately and only
+             invoke e2 if there are any nodes not matched by e1
+             at all.  In this case the result will be the same as running
+             e1 alone.</para>
+             </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.And(Org.XmlUnit.Diff.ElementSelector[])">
+            <summary>
+              Accepts two elements if all of the given ElementSelectors do.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.Xor(Org.XmlUnit.Diff.ElementSelector,Org.XmlUnit.Diff.ElementSelector)">
+            <summary>
+               Accepts two elements if exactly on of the given ElementSelectors does.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.ConditionalSelector(System.Predicate{System.Xml.XmlElement},Org.XmlUnit.Diff.ElementSelector)">
+            <summary>
+            Applies the wrapped ElementSelector's logic if and only if the
+            control element matches the given predicate.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.SelectorForElementNamed(System.String,Org.XmlUnit.Diff.ElementSelector)">
+            <summary>
+            Applies the wrapped ElementSelector's logic if and only if the
+            control element has the given (local) name.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.SelectorForElementNamed(System.Xml.XmlQualifiedName,Org.XmlUnit.Diff.ElementSelector)">
+            <summary>
+            Applies the wrapped ElementSelector's logic if and only if the
+            control element has the given name.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.ByXPath(System.String,Org.XmlUnit.Diff.ElementSelector)">
+            <summary>
+            Selects two elements as matching if the child elements selected
+            via XPath match using the given childSelector.
+            </summary>
+            <remarks>
+              <para>
+                The xpath expression should yield elements.  Two elements
+                match if a DefaultNodeMatcher applied to the selected children
+                finds matching pairs for all children.
+              </para>
+            </remarks>
+            <param name="xpath">XPath expression applied in the context of the
+            elements to chose from that selects the children to compare.</param>
+            <param name="childSelector">ElementSelector to apply to the selected children.</param>
+            <returns>an ElementSelector</returns>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.ByXPath(System.String,System.Collections.Generic.IDictionary{System.String,System.String},Org.XmlUnit.Diff.ElementSelector)">
+            <summary>
+            Selects two elements as matching if the child elements selected
+            via XPath match using the given childSelector.
+            </summary>
+            <remarks>
+              <para>
+                The xpath expression should yield elements.  Two elements
+                match if a DefaultNodeMatcher applied to the selected children
+                finds matching pairs for all children.
+              </para>
+            </remarks>
+            <param name="xpath">XPath expression applied in the context of the
+            elements to chose from that selects the children to compare.</param>
+            <param name="childSelector">ElementSelector to apply to the selected children.</param>
+            <param name="prefix2Uri">provides prefix mapping for
+            namespace prefixes used inside the xpath expression. Maps
+            from prefix to namespace URI</param>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.ConditionalBuilder">
+            <summary>
+              Allows to build complex ElementSelectors by combining simpler blocks.
+            </summary>
+            <remarks>
+              <para>
+                All pairs created by the when*/thenUse pairs
+                are evaluated in order until one returns true, finally the
+                default, if any, is consulted.
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.TO_NODE_INFO(System.Xml.XmlNode)">
+            <summary>
+            Maps Nodes to their NodeInfo equivalent.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.ElementSelectors.IConditionalSelectorBuilderThen">
+            <summary>
+              then-part of conditional ElementSelectors built
+              via IConditionalSelectorBuilder.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.IConditionalSelectorBuilderThen.ThenUse(Org.XmlUnit.Diff.ElementSelector)">
+            <summary>
+            Specifies the ElementSelector to use when the condition holds true.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.ElementSelectors.IConditionalSelectorBuilder">
+            <summary>
+              Allows to build complex ElementSelectors by combining simpler blocks.
+            </summary>
+            <remarks>
+              <para>
+            All When*s are consulted in order and if one returns true
+            then the associated ElementSelector is used.  If all of
+            them return false, the default set up with ElseUse if any
+            is used.
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.IConditionalSelectorBuilder.When(System.Predicate{System.Xml.XmlElement})">
+            <summary>
+            Sets up a conditional ElementSelector.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.IConditionalSelectorBuilder.WhenElementIsNamed(System.String)">
+            <summary>
+            Sets up a conditional ElementSelector.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.IConditionalSelectorBuilder.WhenElementIsNamed(System.Xml.XmlQualifiedName)">
+            <summary>
+            Sets up a conditional ElementSelector.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.IConditionalSelectorBuilder.ElseUse(Org.XmlUnit.Diff.ElementSelector)">
+            <summary>
+            Assigns a default ElementSelector that is used if all
+            Whens have returned false.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.ElementSelectors.IConditionalSelectorBuilder.Build">
+            <summary>
+            Builds a conditional ElementSelector.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.DefaultNodeMatcher">
+             <summary>
+             Strategy that matches control and tests nodes for comparison.
+             </summary>
+             <remarks>
+             <para>There is an important difference between using
+             ElementSelectors#Or to combine multiple ElementSelectors
+             and using DefaultNodeMatcher's constructor with multiple
+             ElementSelectors:</para>
+            
+             <para>Consider ElementSelectors e1 and e2 and
+             two control and test nodes each.  Assume e1 would match the
+             first control node to the second test node and vice versa if used
+             alone, while e2 would match the nodes in order (the first
+             control node to the first test and so on).</para>
+            
+             <para>ElementSelectors#Or creates a combined
+             ElementSelector that is willing to match the first control node to
+             both of the test nodes - and the same for the second control node.
+             Since nodes are compared in order when possible the result will be
+             the same as running e2 alone.</para>
+            
+             <para>DefaultNodeMatcher with two ElementSelectors
+             will consult the ElementSelectors separately and only
+             invoke e2 if there are any nodes not matched by e1
+             at all.  In this case the result will be the same as running
+             e1 alone.</para>
+             </remarks>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.INodeMatcher">
+            <summary>
+            Strategy that matches control and tests nodes for comparison.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.INodeMatcher.Match(System.Collections.Generic.IEnumerable{System.Xml.XmlNode},System.Collections.Generic.IEnumerable{System.Xml.XmlNode})">
+            <summary>
+            Matches control and test nodes against each other, returns
+            the matching pairs.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DefaultNodeMatcher.#ctor">
+            <summary>
+            Creates a new DefaultNodeMatcher using <see cref="M:Org.XmlUnit.Diff.ElementSelectors.Default(System.Xml.XmlElement,System.Xml.XmlElement)"/> and <see cref="M:Org.XmlUnit.Diff.DefaultNodeMatcher.DefaultNodeTypeMatcher(System.Xml.XmlNodeType,System.Xml.XmlNodeType)"/>.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DefaultNodeMatcher.#ctor(Org.XmlUnit.Diff.ElementSelector[])">
+            <summary>
+            Creates a new DefaultNodeMatcher using the given <see cref="T:Org.XmlUnit.Diff.ElementSelector"/>s and <see cref="M:Org.XmlUnit.Diff.DefaultNodeMatcher.DefaultNodeTypeMatcher(System.Xml.XmlNodeType,System.Xml.XmlNodeType)"/>.
+            </summary>
+            <param name="es">the element selectors to use</param>
+            <remarks>
+            <para>The <see cref="T:Org.XmlUnit.Diff.ElementSelector"/>s are consulted in order so that
+            the second <see cref="T:Org.XmlUnit.Diff.ElementSelector"/> only gets to match the nodes
+            that the first one couldn't match to any test nodes ate all and
+            so on.</para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DefaultNodeMatcher.#ctor(Org.XmlUnit.Diff.DefaultNodeMatcher.NodeTypeMatcher,Org.XmlUnit.Diff.ElementSelector[])">
+            <summary>
+            Creates a new DefaultNodeMatcher using the given <see cref="T:Org.XmlUnit.Diff.ElementSelector"/> and <see cref="T:Org.XmlUnit.Diff.DefaultNodeMatcher.NodeTypeMatcher"/>.
+            </summary>
+            <param name="es">the element selector to use</param>
+            <param name="ntm">NodeTypeMatcher to use</param>
+            <remarks>
+            <para>The <see cref="T:Org.XmlUnit.Diff.ElementSelector"/>s are consulted in order so that
+            the second <see cref="T:Org.XmlUnit.Diff.ElementSelector"/> only gets to match the nodes
+            that the first one couldn't match to any test nodes ate all and
+            so on.</para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DefaultNodeMatcher.Match(System.Collections.Generic.IEnumerable{System.Xml.XmlNode},System.Collections.Generic.IEnumerable{System.Xml.XmlNode})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DefaultNodeMatcher.DefaultNodeTypeMatcher(System.Xml.XmlNodeType,System.Xml.XmlNodeType)">
+            <summary>
+            Default implementation of <see cref="T:Org.XmlUnit.Diff.DefaultNodeMatcher.NodeTypeMatcher"/> that makes node types of the same type eligible and allows Text and CDATA nodes to be compared to each other.
+            </summary>
+            <param name="controlType">node type on the control side</param>
+            <param name="testType">node type on the test side</param>
+            <returns>whether the two node types can be compared</returns>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.DefaultNodeMatcher.NodeTypeMatcher">
+            <summary>
+            Decides whether to node types can be compared to each other.
+            </summary>
+            <param name="controlType">node type on the control side</param>
+            <param name="testType">node type on the test side</param>
+            <returns>whether the two node types can be compared</returns>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.Diff">
+            <summary>
+            The Diff-Object is the result of two comparisons.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.Diff.#ctor(Org.XmlUnit.ISource,Org.XmlUnit.ISource,System.Collections.Generic.IEnumerable{Org.XmlUnit.Diff.Difference})">
+            <summary>
+            Creates the result of comparing two documents.
+            </summary>
+            <param name="controlSource">the reference document</param>
+            <param name="testSource">the test document</param>
+            <param name="differences">list of differences found</param>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.Diff.#ctor(Org.XmlUnit.ISource,Org.XmlUnit.ISource,Org.XmlUnit.Diff.IComparisonFormatter,System.Collections.Generic.IEnumerable{Org.XmlUnit.Diff.Difference})">
+            <summary>
+            Creates the result of comparing two documents.
+            </summary>
+            <param name="controlSource">the reference document</param>
+            <param name="testSource">the test document</param>
+            <param name="formatter">formatter to use</param>
+            <param name="differences">list of differences found</param>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.Diff.HasDifferences">
+            <return>true if there was at least one difference.</return>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.Diff.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.Diff.ToString(Org.XmlUnit.Diff.IComparisonFormatter)">
+            <summary>
+            Stringify the outcome using the fiven formatter
+            </summary>
+            <param name="formatter">the formatter to use</param>
+            <returns>a string representation of the outcome</returns>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.Diff.FullDescription">
+            <summary>
+            Returns a string representation of this diff using
+            internal IComparisonFormatter or DefaultComparisonFormatter
+            if formatter wasn't set.
+            </summary>
+            <remarks>
+            Each comparison result separated by the end of the line.
+            </remarks>
+            <returns>a string representation of this diff</returns>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.Diff.FullDescription(Org.XmlUnit.Diff.IComparisonFormatter)">
+            <summary>
+            Returns a string representation of this diff using the
+            given IComparisonFormatter}
+            </summary>
+            <param name="formatter">the formatter to use</param>
+            <returns>a string representation of this diff</returns>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.Diff.Differences">
+            <return>all differences found before the comparison process stopped.</return>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.Diff.ControlSource">
+            <summary>
+            The reference source.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.Diff.TestSource">
+            <summary>
+            The test source.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.Difference">
+            <summary>
+            Combines a {@link Comparison} and its {@link ComparisonResult result}.
+            </summary>
+            <remarks>
+              <para>As the name implies, the implicit assumption is that
+              the result is not ComparisonResult#EQUAL.</para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.Difference.#ctor(Org.XmlUnit.Diff.Comparison,Org.XmlUnit.Diff.ComparisonResult)">
+            <summary>
+              Combines comparison and result.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.Difference.ToString(Org.XmlUnit.Diff.IComparisonFormatter)">
+            <summary>
+            Returns a string representation of this difference using the
+            given IComparisonFormatter.
+            <param name="formatter">the IComparisonFormatter to use</param>
+            <return>a string representation of this difference</return>
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.Difference.ToString">
+            <summary>
+            Returns a string representation of this difference using
+            DefaultComparisonFormatter.
+            <return>a string representation of this difference</return>
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.Difference.Result">
+            <summary>
+              The result of the difference.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.Difference.Comparison">
+            <summary>
+              The details of the comparison.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.Difference.Formatter">
+            <summary>
+              Sets the default formatter to use with ToString().
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.DifferenceEvaluator">
+            <summary>
+            May alter the outcome of a comparison.
+            </summary>
+            <return>the new result of the comparison.</return>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.DifferenceEvaluators">
+            <summary>
+            Evaluators used for the base cases.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DifferenceEvaluators.Accept(Org.XmlUnit.Diff.Comparison,Org.XmlUnit.Diff.ComparisonResult)">
+            <summary>
+            Difference evaluator that just echos the result passed in.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DifferenceEvaluators.Default(Org.XmlUnit.Diff.Comparison,Org.XmlUnit.Diff.ComparisonResult)">
+            <summary>
+            The "standard" difference evaluator which decides which
+            differences make two XML documents really different and which
+            still leave them similar.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DifferenceEvaluators.First(Org.XmlUnit.Diff.DifferenceEvaluator[])">
+            <summary>
+            Combines multiple DifferenceEvaluators so that the first
+            one that changes the outcome wins.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DifferenceEvaluators.Chain(Org.XmlUnit.Diff.DifferenceEvaluator[])">
+            <summary>
+            Combines multiple DifferenceEvaluators so that the result
+            of the first Evaluator will be passed to the next
+            Evaluator.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DifferenceEvaluators.DowngradeDifferencesToEqual(Org.XmlUnit.Diff.ComparisonType[])">
+            <summary>
+            Creates a DifferenceEvaluator that returns a EQUAL result for
+            differences found in one of the given ComparisonTypes.
+            </summary>
+            <remarks>
+              <para>
+             since XMLUnit 2.1.0
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DifferenceEvaluators.DowngradeDifferencesToSimilar(Org.XmlUnit.Diff.ComparisonType[])">
+            <summary>
+            Creates a DifferenceEvaluator that returns a SIMILAR result for
+            differences (Comparisons that are not EQUAL) found in one of
+            the given ComparisonTypes.
+            </summary>
+            <remarks>
+              <para>
+            since XMLUnit 2.1.0
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DifferenceEvaluators.UpgradeDifferencesToDifferent(Org.XmlUnit.Diff.ComparisonType[])">
+            <summary>
+            Creates a DifferenceEvaluator that returns a DIFFERENT result
+            for differences (Comparisons that are not EQUAL) found in one
+            of the given ComparisonTypes.
+            </summary>
+            <remarks>
+              <para>
+            since XMLUnit 2.1.0
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DifferenceEvaluators.IgnorePrologDifferences">
+            <summary>
+            Ignore any differences that are part of the XML prolog.
+            </summary>
+            <remarks>
+            <para>Here "ignore" means return {@code ComparisonResult.EQUAL}.</para>
+            </remarks>
+            <remarks>
+              <para>
+            since XMLUnit 2.1.0
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DifferenceEvaluators.IgnorePrologDifferencesExceptDoctype">
+            <summary>
+            Ignore any differences except differences inside the doctype
+            declaration that are part of the XML prolog.
+            </summary>
+            <remarks>
+              <para>
+            Here "ignore" means return ComparisonResult.EQUAL.
+              </para>
+              <para>
+            In general different doctype declarations will be ignored
+            because of NodeFilters.Default, so if you want to detect
+            these differences you need to pick a different NodeFilter.
+              </para>
+              <para>
+            since XMLUnit 2.1.0
+              </para>
+            </remarks>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.DOMDifferenceEngine">
+            <summary>
+            Difference engine based on DOM.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DOMDifferenceEngine.Compare(Org.XmlUnit.ISource,Org.XmlUnit.ISource)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DOMDifferenceEngine.CompareNodes(System.Xml.XmlNode,Org.XmlUnit.Diff.XPathContext,System.Xml.XmlNode,Org.XmlUnit.Diff.XPathContext)">
+             <summary>
+             Recursively compares two XML nodes.
+             </summary>
+             <remarks>
+             Performs comparisons common to all node types, then performs
+             the node type specific comparisons and finally recurses into
+             the node's child lists.
+            
+             Stops as soon as any comparison returns ComparisonResult.CRITICAL.
+             </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DOMDifferenceEngine.NodeTypeSpecificComparison(System.Xml.XmlNode,Org.XmlUnit.Diff.XPathContext,System.Xml.XmlNode,Org.XmlUnit.Diff.XPathContext)">
+            <summary>
+            Dispatches to the node type specific comparison if one is
+            defined for the given combination of nodes.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DOMDifferenceEngine.CompareCharacterData(System.Xml.XmlCharacterData,Org.XmlUnit.Diff.XPathContext,System.Xml.XmlCharacterData,Org.XmlUnit.Diff.XPathContext)">
+            <summary>
+            Compares textual content.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DOMDifferenceEngine.CompareDocuments(System.Xml.XmlDocument,Org.XmlUnit.Diff.XPathContext,System.Xml.XmlDocument,Org.XmlUnit.Diff.XPathContext)">
+            <summary>
+            Compares document node, doctype and XML declaration properties
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DOMDifferenceEngine.CompareDocTypes(System.Xml.XmlDocumentType,Org.XmlUnit.Diff.XPathContext,System.Xml.XmlDocumentType,Org.XmlUnit.Diff.XPathContext)">
+            <summary>
+            Compares properties of the doctype declaration.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DOMDifferenceEngine.CompareDeclarations(System.Xml.XmlDeclaration,Org.XmlUnit.Diff.XPathContext,System.Xml.XmlDeclaration,Org.XmlUnit.Diff.XPathContext)">
+            <summary>
+            Compares properties of XML declaration.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DOMDifferenceEngine.CompareElements(System.Xml.XmlElement,Org.XmlUnit.Diff.XPathContext,System.Xml.XmlElement,Org.XmlUnit.Diff.XPathContext)">
+            <summary>
+            Compares element's node properties, in particular the
+            element's name and its attributes.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DOMDifferenceEngine.CompareElementAttributes(System.Xml.XmlElement,Org.XmlUnit.Diff.XPathContext,System.Xml.XmlElement,Org.XmlUnit.Diff.XPathContext)">
+            <summary>
+            Compares element's attributes.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DOMDifferenceEngine.CompareProcessingInstructions(System.Xml.XmlProcessingInstruction,Org.XmlUnit.Diff.XPathContext,System.Xml.XmlProcessingInstruction,Org.XmlUnit.Diff.XPathContext)">
+            <summary>
+            Compares properties of a processing instruction.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DOMDifferenceEngine.CompareNodeLists(System.Collections.Generic.IEnumerable{System.Xml.XmlNode},System.Collections.Generic.IEnumerable{System.Xml.XmlNode},Org.XmlUnit.Diff.XPathContext,System.Collections.Generic.IEnumerable{System.Xml.XmlNode},System.Collections.Generic.IEnumerable{System.Xml.XmlNode},Org.XmlUnit.Diff.XPathContext)">
+            <summary>
+            Matches nodes of two node lists and invokes compareNode on
+            each pair.
+            </summary>
+            <remarks>
+            Also performs CHILD_LOOKUP comparisons for each node that
+            couldn't be matched to one of the "other" list.
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DOMDifferenceEngine.CompareXsiType(System.Xml.XmlAttribute,Org.XmlUnit.Diff.XPathContext,System.Xml.XmlAttribute,Org.XmlUnit.Diff.XPathContext)">
+            <summary>
+            Compares xsi:type attribute values
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DOMDifferenceEngine.CompareAttributes(System.Xml.XmlAttribute,Org.XmlUnit.Diff.XPathContext,System.Xml.XmlAttribute,Org.XmlUnit.Diff.XPathContext)">
+            <summary>
+            Compares properties of an attribute.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DOMDifferenceEngine.CompareAttributeExplicitness(System.Xml.XmlAttribute,Org.XmlUnit.Diff.XPathContext,System.Xml.XmlAttribute,Org.XmlUnit.Diff.XPathContext)">
+            <summary>
+            Compares whether two attributes are specified explicitly.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DOMDifferenceEngine.SplitAttributes(System.Xml.XmlAttributeCollection)">
+            <summary>
+            Separates XML namespace related attributes from "normal"
+            attributes.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.DOMDifferenceEngine.FindMatchingAttr(System.Collections.Generic.IList{System.Xml.XmlAttribute},System.Xml.XmlAttribute)">
+            <summary>
+            Find the attribute with the same namespace and local name
+            as a given attribute in a list of attributes.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.ElementSelector">
+            <summary>
+            Strategy for selecting matching elements.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.NodeFilters">
+            <summary>
+            Common NodeFilter implementations.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.NodeFilters.Default(System.Xml.XmlNode)">
+            <summary>
+            Suppresses document-type and XML declaration nodes.
+            </summary>
+            <remarks>
+              <para>
+            This is the default used by AbstractDifferenceEngine and
+            thus DOMDifferenceEngine.
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.NodeFilters.AcceptAll(System.Xml.XmlNode)">
+            <summary>
+            Suppresses document-type and XML declaration nodes.
+            </summary>
+            <remarks>
+              <para>
+                since XMLUnit 2.6.0
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.NodeFilters.SatifiesAll(System.Predicate{System.Xml.XmlNode}[])">
+            <summary>
+              Accepts nodes that are accepted by all given filters.
+            </summary>
+            <remarks>
+              <para>
+                This short-circuits the given list of predicates and
+                returns false as soon as the first predicate does.
+              </para>
+              <para>
+                since XMLUnit 2.9.2
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.NodeFilters.SatifiesAny(System.Predicate{System.Xml.XmlNode}[])">
+            <summary>
+              Accepts nodes that are accepted by at least on of the given filters.
+            </summary>
+            <remarks>
+              <para>
+                This short-circuits the given list of predicates and
+                returns true as soon as the first predicate does.
+              </para>
+              <para>
+                since XMLUnit 2.9.2
+              </para>
+            </remarks>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.MultiLevelByNameAndTextSelector">
+             <summary>
+             ElementSelector that allows two elements to be compared if
+             their name (including namespace URI, if any) and textual
+             content is the same at a certain level of nesting.
+             </summary>
+            
+             <remarks>
+             <para>This means ElementSelectors.ByNameAndText and
+             MultiLevelByNameAndTextSelector(1).CanBeCompared should lead
+             to the same results.</para>
+             <para>Any attribute values are completely ignored.  Only works
+             on elements with exactly one child element at each
+             level.</para>
+             <para>This class mostly exists as an example for custom
+             ElementSelectors and may need to be combined inside a
+             ConditionalSelector in order to be useful for the document as
+             a whole.</para>
+             </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.MultiLevelByNameAndTextSelector.#ctor(System.Int32)">
+            <summary>
+            Uses element names and the text nested levels
+            child elements deeper into the element to compare
+            elements.
+            </summary>
+            <remarks>
+              <para>
+              Does not ignore empty text nodes.
+              </para>
+            </remarks>
+            <param name="levels">number of levels to traverse before the text content is encountered</param>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.MultiLevelByNameAndTextSelector.#ctor(System.Int32,System.Boolean)">
+            <summary>
+            Uses element names and the text nested levels
+            child elements deeper into the element to compare
+            elements.
+            </summary>
+            <param name="ignoreEmptyTexts">whether whitespace-only
+            textnodes should be ignored.</param>
+            <param name="levels">number of levels to traverse before the text content is encountered</param>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.MultiLevelByNameAndTextSelector.CanBeCompared(System.Xml.XmlElement,System.Xml.XmlElement)">
+            <inheritdoc cref="T:Org.XmlUnit.Diff.ElementSelector"/>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.RecursiveXPathBuilder">
+            <summary>
+            Finds the XPathContext of a Node by recursively building up the XPathContext.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.RecursiveXPathBuilder.Map(System.Xml.XmlNode)">
+            <summary>
+            Maps a node to an XPathContext by recursing the DOM tree
+            towards the root node.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.RecursiveXPathBuilder.NamespaceContext">
+            <summary>
+            Establish a namespace context mapping from prefix to URI
+            that will be used in Comparison.Detail.XPath.
+            </summary>
+            <remarks>
+            Without a namespace context (or with an empty context) the
+            XPath expressions will only use local names for elements and
+            attributes.
+            </remarks>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.XPathContext">
+            <summary>
+            Mutable representation of an XPath.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.XPathContext.#ctor">
+            <summary>
+            Creates a new empty context without namespace context.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.XPathContext.#ctor(System.Xml.XmlNode)">
+            <summary>
+            Creates a new empty context with a given root without namespace context.
+            </summary>
+            <param name="root">the root of the XPath</param>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.XPathContext.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Creates a new empty context with namespace context.
+            </summary>
+            <param name="prefix2uri">map from prefix to namespace URI to use when building the XPath expression</param>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.XPathContext.#ctor(System.Collections.Generic.IDictionary{System.String,System.String},System.Xml.XmlNode)">
+            <summary>
+            Creates a new empty context with a given root and namespace context.
+            </summary>
+            <param name="root">the root of the XPath</param>
+            <param name="prefix2uri">map from prefix to namespace URI to use when building the XPath expression</param>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.XPathContext.NavigateToChild(System.Int32)">
+            <summary>
+            Positions the XPath at the nth child of the current context.
+            </summary>
+            <param name="n">index of child to navigate to</param>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.XPathContext.NavigateToAttribute(System.Xml.XmlQualifiedName)">
+            <summary>
+            Positions the XPath at the named attribute of the current element.
+            </summary>
+            <param name="attribute">name of the attribute</param>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.XPathContext.NavigateToParent">
+            <summary>
+            Positions the XPath at the parent of the current context.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.XPathContext.AddAttributes``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Makes the list of attributes known to this context.
+            </summary>
+            <param name="attributes">the attributes to learn</param>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.XPathContext.AddAttribute(System.Xml.XmlQualifiedName)">
+            <summary>
+            Makes the an attribute known to this context.
+            </summary>
+            <param name="attribute">the attribute to learn</param>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.XPathContext.SetChildren``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Replaces knowledge about children of the current context with the new list.
+            </summary>
+            <typeparam name="N">abstract representation of a child</typeparam>
+            <param name="children">list of children to learn</param>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.XPathContext.AppendChildren``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Adds knowledge about children of the current context with the new list - adds to the children already known.
+            </summary>
+            <typeparam name="N">abstract representation of a child</typeparam>
+            <param name="children">list of children to learn</param>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.XPathContext.Clone">
+            <summary>
+            Creates a deep copy of this XPathContext.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.XPathContext.Add1OrIncrement(System.String,System.Collections.Generic.IDictionary{System.String,System.Int32})">
+            <summary>
+            Increments the value name maps to or adds 1 as value if name
+            isn't present inside the map.
+            </summary>
+            <returns>the new mapping for name</returns>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.XPathContext.XPath">
+            <summary>
+            A stringified XPath describing the current context.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.XPathContext.ParentXPath">
+            <summary>
+            A stringified XPath describing the current context's parent.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.XPathContext.INodeInfo">
+            <summary>
+            Abstract representation of a node inside the XPathContext.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.XPathContext.INodeInfo.Name">
+            <summary>
+            The fully qualified name of a node.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.XPathContext.INodeInfo.Type">
+            <summary>
+            The type of a node.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Diff.XPathContext.DOMNodeInfo">
+            <summary>
+            DOM based implementation of <see cref="T:Org.XmlUnit.Diff.XPathContext.INodeInfo"/>.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Diff.XPathContext.DOMNodeInfo.#ctor(System.Xml.XmlNode)">
+            <summary>
+            Obtains information from the given XmlNode
+            </summary>
+            <param name="n">node to read information from</param>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.XPathContext.DOMNodeInfo.Name">
+            <inheritdoc/>
+        </member>
+        <member name="P:Org.XmlUnit.Diff.XPathContext.DOMNodeInfo.Type">
+            <inheritdoc/>
+        </member>
+        <member name="T:Org.XmlUnit.Input.AbstractSource">
+            <summary>
+            Provides a base implementation for the different concrete ISource
+            implementations.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.ISource">
+            <summary>
+            Representation of the various ways to provide pieces of XML to
+            XMLUnit.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.ISource.Reader">
+            <summary>
+            Provides the content.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.ISource.SystemId">
+            <summary>
+            Some sort of Base-URI of this ISource.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Input.AbstractSource.#ctor(System.Xml.XmlReader)">
+            <summary>
+            Creates a new Source wrapping a reader.
+            </summary>
+            <param name="r">the reader to wrap</param>
+        </member>
+        <member name="M:Org.XmlUnit.Input.AbstractSource.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="P:Org.XmlUnit.Input.AbstractSource.Reader">
+            <inheritdoc/>
+        </member>
+        <member name="P:Org.XmlUnit.Input.AbstractSource.SystemId">
+            <inheritdoc/>
+        </member>
+        <member name="T:Org.XmlUnit.Input.ByteArraySource">
+            <summary>
+            Source that provides XML from a byte array.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Input.ByteArraySource.#ctor(System.Byte[])">
+            <summary>
+            Creates a new Source wrapping a byte array.
+            </summary>
+            <param name="c">the byte array to wrap</param>
+        </member>
+        <member name="M:Org.XmlUnit.Input.ByteArraySource.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="P:Org.XmlUnit.Input.ByteArraySource.Reader">
+            <inheritdoc/>
+        </member>
+        <member name="P:Org.XmlUnit.Input.ByteArraySource.SystemId">
+            <inheritdoc/>
+        </member>
+        <member name="T:Org.XmlUnit.Input.CommentLessSource">
+            <summary>
+            ISource implementation that is obtained from a different
+            source by stripping all comments.
+            </summary>
+            <remarks>
+              <para>
+                As of XMLUnit.NET 2.5.0 it is possible to select the XSLT
+                version to use for the stylesheet. The default now is 2.0,
+                it used to be 1.0 and you may need to change the value if
+                your transformer doesn't support XSLT 2.0.
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Input.CommentLessSource.#ctor(Org.XmlUnit.ISource)">
+            <summary>
+            Creates a new Source with the same content as another
+            source removing all comments using an XSLT stylesheet of
+            version 2.0.
+            </summary>
+            <param name="originalSource">source with the original content</param>
+        </member>
+        <member name="M:Org.XmlUnit.Input.CommentLessSource.#ctor(Org.XmlUnit.ISource,System.String)">
+            <summary>
+            Creates a new Source with the same content as another
+            source removing all comments.
+            </summary>
+            <remarks>
+              <para>
+              since XMLUnit 2.5.0
+              </para>
+            </remarks>
+            <param name="originalSource">source with the original content</param>
+            <param name="xsltVersion">use this version for the stylesheet</param>
+        </member>
+        <member name="P:Org.XmlUnit.Input.CommentLessSource.Reader">
+            <inheritdoc/>
+        </member>
+        <member name="P:Org.XmlUnit.Input.CommentLessSource.SystemId">
+            <inheritdoc/>
+        </member>
+        <member name="T:Org.XmlUnit.Input.DOMSource">
+            <summary>
+            ISource implementation encapsulating a DOM Node.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Input.DOMSource.#ctor(System.Xml.XmlNode)">
+            <summary>
+            Wraps the given XmlNode as ISource.
+            </summary>
+            <param name="node">the node to wrap</param>
+        </member>
+        <member name="P:Org.XmlUnit.Input.DOMSource.Node">
+            <summary>
+            The node this source is wrapping
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Input.ElementContentWhitespaceStrippedSource">
+            <summary>
+            A source that is obtained from a different source by removing all
+            text nodes that only contain whitespace.
+            </summary>
+            <remarks>
+              <para>
+              since XMLUnit 2.6.0
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Input.ElementContentWhitespaceStrippedSource.#ctor(Org.XmlUnit.ISource)">
+            <summary>
+            Creates a new source that consists of the given source with all
+            text nodes that only contain whitespace stripped.
+            </summary>
+            <param name="originalSource">source with the original content</param>
+        </member>
+        <member name="T:Org.XmlUnit.Input.LinqSource">
+            <summary>
+            ISource implementation encapsulating a System.Xml.Linq XNode.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Input.LinqSource.#ctor(System.Xml.Linq.XNode)">
+            <summary>
+            Wraps the given XNode as ISource.
+            </summary>
+            <param name="node">the node to wrap</param>
+        </member>
+        <member name="P:Org.XmlUnit.Input.LinqSource.Node">
+            <summary>
+            The node this source is wrapping
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Input.NormalizedSource">
+            <summary>
+            Performs XML normalization on a given ISource or DOM Node.
+            </summary>
+            <remarks>
+              <para>
+              This means adjacent text nodes are merged to single nodes
+              and empty Text nodes removed (recursively).  See the linked
+              API docs for details.
+              </para>
+              <para>
+              When reading documents a parser usually puts the document
+              into normalized form anway.  You will only need to perform
+              XML normalization on DOM trees you have created
+              programmatically.
+              </para>
+              <para>
+                https://msdn.microsoft.com/en-us/library/system.xml.xmlnode.normalize%28v=vs.110%29.aspx
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Input.NormalizedSource.#ctor(System.Xml.XmlNode)">
+            <summary>
+            Creates a new Source wrapping a XmlNode after normalizing it.
+            </summary>
+            <param name="node">source with the original content</param>
+        </member>
+        <member name="M:Org.XmlUnit.Input.NormalizedSource.#ctor(System.Xml.XmlNode,System.String)">
+            <summary>
+            Creates a new Source wrapping a XmlNode after normalizing it.
+            </summary>
+            <param name="node">source with the original content</param>
+            <param name="systemId">the systemId to use</param>
+        </member>
+        <member name="M:Org.XmlUnit.Input.NormalizedSource.#ctor(Org.XmlUnit.ISource)">
+            <summary>
+            Creates a new Source with the same content as another source normalizing the document.
+            </summary>
+            <param name="originalSource">source with the original content</param>
+        </member>
+        <member name="M:Org.XmlUnit.Input.NormalizedSource.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="P:Org.XmlUnit.Input.NormalizedSource.Node">
+            <summary>
+            The node this source is wrapping
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Input.NormalizedSource.Reader">
+            <inheritdoc/>
+        </member>
+        <member name="P:Org.XmlUnit.Input.NormalizedSource.SystemId">
+            <inheritdoc/>
+        </member>
+        <member name="T:Org.XmlUnit.Input.ReaderSource">
+            <summary>
+            ISource implementation encapsulating a plain XmlReader.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Input.ReaderSource.#ctor(System.Xml.XmlReader)">
+            <summary>
+            Wraps the given reader as ISource.
+            </summary>
+            <param name="rdr">the reader to wrap</param>
+        </member>
+        <member name="T:Org.XmlUnit.Input.StreamSource">
+            <summary>
+            ISource implementation encapsulating data read from a stream
+            or a reader.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Input.StreamSource.#ctor(System.IO.TextReader)">
+            <summary>
+            Wraps the given reader.
+            </summary>
+            <param name="rdr">the reader to wrap</param>
+        </member>
+        <member name="M:Org.XmlUnit.Input.StreamSource.#ctor(System.IO.Stream)">
+            <summary>
+            Wraps the given stream.
+            </summary>
+            <param name="stream">the stream to wrap</param>
+        </member>
+        <member name="M:Org.XmlUnit.Input.StreamSource.#ctor(System.String)">
+            <summary>
+            Reads from the given URI
+            </summary>
+            <param name="uri">the URI to read</param>
+        </member>
+        <member name="T:Org.XmlUnit.Input.StringSource">
+            <summary>
+            Source that provides XML from a string.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Input.StringSource.#ctor(System.String)">
+            <summary>
+            Creates a new Source wrapping a string.
+            </summary>
+            <param name="c">the string to wrap</param>
+        </member>
+        <member name="M:Org.XmlUnit.Input.StringSource.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="P:Org.XmlUnit.Input.StringSource.Reader">
+            <inheritdoc/>
+        </member>
+        <member name="P:Org.XmlUnit.Input.StringSource.SystemId">
+            <inheritdoc/>
+        </member>
+        <member name="T:Org.XmlUnit.Input.WhitespaceNormalizedSource">
+            <summary>
+            A source that is obtained from a different source by removing
+            all empty text nodes and normalizing the non-empty ones.
+            </summary>
+            <remarks>
+            "normalized" in this context means all whitespace characters
+            are replaced by space characters and consecutive whitespace
+            characters are collapsed.
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Input.WhitespaceNormalizedSource.#ctor(Org.XmlUnit.ISource)">
+            <summary>
+            Creates a new Source with the same content as another source normalizing whitespace in Text nodes.
+            </summary>
+            <param name="originalSource">source with the original content</param>
+        </member>
+        <member name="T:Org.XmlUnit.Input.WhitespaceStrippedSource">
+            <summary>
+            A source that is obtained from a different source by removing
+            all empty text nodes and trimming the non-empty ones.
+            </summary>
+            <remarks>
+              <para>
+            If you only want to remove text nodes consisting solely of
+            whitespace (AKA element content whitespace) but leave all
+            other text nodes alone you should use
+            ElementContentWhitespaceStrippedSource instead.
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Input.WhitespaceStrippedSource.#ctor(Org.XmlUnit.ISource)">
+            <summary>
+            Creates a new Source with the same content as another source trimming whitespace from Text nodes.
+            </summary>
+            <param name="originalSource">source with the original content</param>
+        </member>
+        <member name="T:Org.XmlUnit.Transform.Transformation">
+             <summary>
+             Provides a convenience layer over System.Xml.Xsl.
+             </summary>
+             <remarks>
+             Apart from ArgumentExceptions if you try to pass in null
+             values only the Transform methods will ever throw exceptions
+             and these will be XMLUnit's exceptions.
+            
+             Each invocation of a Transform method will use a fresh
+             XslCompiledTransform instance, the Transform methods are
+             thread-safe.
+             </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Transform.Transformation.#ctor">
+            <summary>
+            Creates a new transformation without source or stylesheet.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Transform.Transformation.#ctor(Org.XmlUnit.ISource)">
+            <summary>
+            Creates a new transformation with a given source.
+            </summary>
+            <param name="s">the source to transform - must not be null.</param>
+        </member>
+        <member name="M:Org.XmlUnit.Transform.Transformation.AddExtensionObject(System.String,System.Object)">
+            <summary>
+            Add a named extension object.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Transform.Transformation.Clear">
+            <summary>
+            Clears all extension objects and parameters.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Transform.Transformation.AddParameter(System.String,System.String,System.Object)">
+            <summary>
+            Add a named parameter.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Transform.Transformation.TransformTo(System.IO.Stream)">
+            <summary>
+            Perform the transformation.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Transform.Transformation.TransformTo(System.IO.TextWriter)">
+            <summary>
+            Perform the transformation.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Transform.Transformation.TransformTo(System.Xml.XmlWriter)">
+            <summary>
+            Perform the transformation.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Transform.Transformation.Transform(Org.XmlUnit.Transform.Transformation.Transformer)">
+            <summary>
+            Perform the transformation.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Transform.Transformation.TransformToString">
+            <summary>
+            Convenience method that returns the result of the
+            transformation as a String.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Transform.Transformation.TransformToDocument">
+            <summary>
+            Convenience method that returns the result of the
+            transformation as a Document.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Transform.Transformation.TransformToDocument(System.Xml.XmlResolver)">
+            <summary>
+            Convenience method that returns the result of the
+            transformation as a Document.
+            </summary>
+            <param name="resolver">resolver to use when loading the document</param>
+            <remarks>
+              <para>
+                since XMLUnit 2.6.0
+              </para>
+            </remarks>
+        </member>
+        <member name="P:Org.XmlUnit.Transform.Transformation.Source">
+            <summary>
+            Set the source document to transform - must not be null.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Transform.Transformation.Stylesheet">
+            <summary>
+            Set the stylesheet to use - may be null in which case an
+            identity transformation will be performed.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Transform.Transformation.XmlResolver">
+            <summary>
+            Set the resolver to use for document() and xsl:include/import
+            </summary>
+            <remarks>may be null in which case an empty XmlUrlResolver
+            will be used.</remarks>
+        </member>
+        <member name="P:Org.XmlUnit.Transform.Transformation.EnableDocumentFunction">
+            <summary>
+            Whether the document() function will be allowed.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Transform.Transformation.EnableScriptBlocks">
+            <summary>
+            Whether embedded script blocks will be allowed.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Util.Convert">
+            <summary>
+            Conversion methods.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Util.Convert.ToDocument(Org.XmlUnit.ISource)">
+            <summary>
+            Creates a DOM Document from an ISource.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Util.Convert.ToDocument(Org.XmlUnit.ISource,System.Boolean)">
+            <summary>
+            Creates a DOM Document from an ISource.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Util.Convert.ToDocument(Org.XmlUnit.ISource,System.Boolean,System.Xml.XmlResolver)">
+            <summary>
+            Creates a DOM Document from an ISource.
+            </summary>
+            <remarks>
+              <para>
+                since XMLUnit 2.6.0
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Util.Convert.ToNode(Org.XmlUnit.ISource)">
+            <summary>
+            Creates a DOM Node from an ISource.
+            </summary>
+            <remarks>
+            Unless the source is a DOMSource this will return the same
+            result as ToDocument.
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Util.Convert.ToNamespaceContext(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Creates a namespace resolver from a Map prefix =&gt;
+            Namespace URI.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Util.Linqy">
+            <summary>
+            Sequence processing constructs not present in System.Linq.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Util.Linqy.Singleton``1(``0)">
+            <summary>
+            An enumerable containing a single element.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Util.Linqy.FirstOrDefault``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean},``0)">
+            <summary>
+            Like Enumerable.FirstOrDefault but with a configurable default value.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Util.Linqy.FirstOrDefaultValue``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0},``0)">
+            <summary>
+            Like Enumerable.FirstOrDefault but with a configurable default value.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Util.Nodes">
+            <summary>
+            Utility algorithms that work on DOM nodes.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Util.Nodes.GetQName(System.Xml.XmlNode)">
+            <summary>
+            Extracts a Node's name and namespace URI (if any).
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Util.Nodes.GetMergedNestedText(System.Xml.XmlNode)">
+            <summary>
+            Tries to merge all direct Text and CDATA children of the given
+            Node and concatenates their value.
+            </summary>
+            <return>an empty string if the Node has no Text or CDATA
+            children.</return>
+        </member>
+        <member name="M:Org.XmlUnit.Util.Nodes.GetAttributes(System.Xml.XmlNode)">
+            <summary>
+            Obtains an element's attributes as dictionary.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Util.Nodes.StripWhitespace(System.Xml.XmlNode)">
+            <summary>
+            Creates a new Node (of the same type as the original node)
+            that is similar to the orginal but doesn't contain any
+            empty text or CDATA nodes and where all textual content
+            including attribute values or comments are trimmed.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Util.Nodes.NormalizeWhitespace(System.Xml.XmlNode)">
+            <summary>
+            Creates a new Node (of the same type as the original node)
+            that is similar to the orginal but doesn't contain any
+            empty text or CDATA nodes and where all textual content
+            including attribute values or comments are normalized.
+            </summary>
+            <remarks>
+              <para>
+            "normalized" in this context means all whitespace
+            characters are replaced by space characters and
+            consecutive whitespace characaters are collapsed.
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Util.Nodes.StripElementContentWhitespace(System.Xml.XmlNode)">
+            <summary>
+            Creates a new Node (of the same type as the original node)
+            that is similar to the orginal but doesn't contain any
+            text or CDATA nodes that only consist of whitespace.
+            </summary>
+            <remarks>
+              <para>
+            This doesn't have any effect if applied to a text or CDATA
+            node itself.
+              </para>
+              <para>
+            since XMLUnit 2.6.0
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Org.XmlUnit.Util.Nodes.HandleWsRec(System.Xml.XmlNode,System.Boolean)">
+            <summary>
+            Trims textual content of this node, removes empty text and
+            CDATA children, recurses into its child nodes.
+            </summary>
+            <parameter name="normalize">whether to normalize
+            whitespace as well</parameter>
+        </member>
+        <member name="M:Org.XmlUnit.Util.Nodes.Normalize(System.String)">
+            <summary>
+            Normalize a string.
+            </summary>
+            <remarks>
+            "normalized" in this context means all whitespace
+            characters are replaced by space characters and
+            consecutive whitespace characaters are collapsed.
+            </remarks>
+        </member>
+        <member name="T:Org.XmlUnit.Validation.Languages">
+            <summary>
+            Constants for the languages supported by XMLUnit's schema
+            validation.
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Validation.Languages.W3C_XML_SCHEMA_NS_URI">
+            <summary>W3C XML Schema.</summary>
+        </member>
+        <member name="F:Org.XmlUnit.Validation.Languages.XML_DTD_NS_URI">
+            <summary>DTD.</summary>
+        </member>
+        <member name="F:Org.XmlUnit.Validation.Languages.XDR_NS_URI">
+            <summary>XDR.</summary>
+        </member>
+        <member name="T:Org.XmlUnit.Validation.ValidationProblem">
+            <summary>
+            A validation "problem" which may be an error or a warning.
+            </summary>
+        </member>
+        <member name="F:Org.XmlUnit.Validation.ValidationProblem.UNKNOWN">
+            <summary>
+            Used as line or column number if the the real value is unknown
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Validation.ValidationProblem.#ctor(System.String,System.Int32,System.Int32,System.Xml.Schema.XmlSeverityType)">
+            <summary>
+            Creates an instance of ValidationProblem.
+            </summary>
+            <param name="message">the problem's message</param>
+            <param name="line">line the problem was detected in</param>
+            <param name="column">column the problem was detected at</param>
+            <param name="type">the type of problem</param>
+        </member>
+        <member name="M:Org.XmlUnit.Validation.ValidationProblem.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="P:Org.XmlUnit.Validation.ValidationProblem.Line">
+            <summary>
+            The line where the problem occured or UNKNOWN.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Validation.ValidationProblem.Column">
+            <summary>
+            The column where the problem occured or UNKNOWN.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Validation.ValidationProblem.Type">
+            <summary>
+            Whether this is an error or a warning.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Validation.ValidationProblem.Message">
+            <summary>
+            The problem's message.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Validation.ValidationResult">
+            <summary>
+            The result of a validation.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Validation.ValidationResult.#ctor(System.Boolean,System.Collections.Generic.IEnumerable{Org.XmlUnit.Validation.ValidationProblem})">
+            <summary>
+            Captures the result of a validation.
+            </summary>
+            <param name="valid">valid/not valid result</param>
+            <param name="problems">list of problems encountered</param>
+        </member>
+        <member name="P:Org.XmlUnit.Validation.ValidationResult.Valid">
+            <summary>
+            Has the validation been successful?
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Validation.ValidationResult.Problems">
+            <summary>
+            Retrieves the problems that have been found.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Validation.Validator">
+            <summary>
+            Validates a piece of XML against a schema given in a supported
+            language or the definition of such a schema itself.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Validation.Validator.ValidateSchema">
+            <summary>
+            Validates a schema.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Validation.Validator.ValidateInstance(Org.XmlUnit.ISource)">
+            <summary>
+            Validates an instance against the schema.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Validation.Validator.ForLanguage(System.String)">
+            <summary>
+            Factory that obtains a Validator instance based on the schema language.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Validation.Validator.SchemaSources">
+            <summary>
+            Where to find the schema.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Validation.Validator.SchemaSource">
+            <summary>
+            Where to find the schema.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Validation.Validator.Schema">
+            <summary>
+            Sets the schema to use in instance validation directly rather
+            than via SchemaSources.
+            </summary>
+            <remarks>
+              <para>
+             since XMLUnit 2.3.0
+              </para>
+            </remarks>
+        </member>
+        <member name="T:Org.XmlUnit.XMLUnitException">
+            <summary>
+            Base class of any Exception thrown within XMLUnit.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.XMLUnitException.#ctor(System.String,System.Exception)">
+            <summary>
+            Inititializes the exception.
+            </summary>
+            <param name="message">the detail message</param>
+            <param name="cause">the root cause of the exception</param>
+        </member>
+        <member name="M:Org.XmlUnit.XMLUnitException.#ctor(System.String)">
+            <summary>
+            Inititializes an exception without cause.
+            </summary>
+            <param name="message">the detail message</param>
+        </member>
+        <member name="M:Org.XmlUnit.XMLUnitException.#ctor(System.Exception)">
+            <summary>
+             Inititializes an exception using the wrapped exception's message.
+            </summary>
+             <param name="cause">the root cause of the exception</param>
+        </member>
+        <member name="T:Org.XmlUnit.Xpath.IXPathEngine">
+            <summary>
+            Interface for XMLUnit's XPath abstraction.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Xpath.IXPathEngine.SelectNodes(System.String,Org.XmlUnit.ISource)">
+            <summary>
+            Returns a potentially empty collection of Nodes matching an
+            XPath expression.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Xpath.IXPathEngine.Evaluate(System.String,Org.XmlUnit.ISource)">
+            <summary>
+            Evaluates an XPath expression and stringifies the result.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Xpath.IXPathEngine.SelectNodes(System.String,System.Xml.XmlNode)">
+            <summary>
+            Returns a potentially empty collection of Nodes matching an
+            XPath expression.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Xpath.IXPathEngine.Evaluate(System.String,System.Xml.XmlNode)">
+            <summary>
+            Evaluates an XPath expression and stringifies the result.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Xpath.IXPathEngine.NamespaceContext">
+            <summary>
+            Establish a namespace context - maps from prefix to namespace URI.
+            </summary>
+        </member>
+        <member name="T:Org.XmlUnit.Xpath.XPathEngine">
+            <summary>
+            Simplified access to System.Xml.XPath API.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Xpath.XPathEngine.SelectNodes(System.String,Org.XmlUnit.ISource)">
+            <summary>
+            Returns a potentially empty collection of Nodes matching an
+            XPath expression.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Xpath.XPathEngine.Evaluate(System.String,Org.XmlUnit.ISource)">
+            <summary>
+            Evaluates an XPath expression and stringifies the result.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Xpath.XPathEngine.SelectNodes(System.String,System.Xml.XmlNode)">
+            <summary>
+            Returns a potentially empty collection of Nodes matching an
+            XPath expression.
+            </summary>
+        </member>
+        <member name="M:Org.XmlUnit.Xpath.XPathEngine.Evaluate(System.String,System.Xml.XmlNode)">
+            <summary>
+            Evaluates an XPath expression and stringifies the result.
+            </summary>
+        </member>
+        <member name="P:Org.XmlUnit.Xpath.XPathEngine.NamespaceContext">
+            <summary>
+            Establish a namespace context mapping from URI to prefix
+            that will be used in Comparison.Detail.XPath.
+            </summary>
+            <remarks>
+            Without a namespace context (or with an empty context) the
+            XPath expressions will only use local names for elements and
+            attributes.
+            </remarks>
+        </member>
+    </members>
+</doc>

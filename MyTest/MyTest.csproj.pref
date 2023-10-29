@@ -1,0 +1,23 @@
+﻿<Properties>
+  <Array name="active">
+    <Element value="MyTest.rxtst" />
+  </Array>
+  <Array name="bookmarks" />
+  <Array name="files">
+    <Element value="MyTest.rxtst" />
+    <Element value="ocr\get_string_from_ocr.rxrec" />
+    <Element value="ocr\get_string_from_ocr.UserCode.cs" />
+    <Element value="Program.cs" />
+    <Element value="ocr\get_string_from_ocr.cs" />
+  </Array>
+  <Properties name="projectSavedData">
+    <Properties name="customTool">
+      <runOnBuild value="False" />
+    </Properties>
+    <Array name="recentusercodeselections">
+      <Element value="MyTest.ocr.get_string_from_ocr.ocr_element(RepoItemInfo ItemInfo)" />
+      <Element value="MyTest.ocr.get_string_from_ocr.ocr_element(RepoItemInfo ItemInfo)" />
+      <Element value="MyTest.ocr.get_string_from_ocr.start_SUT()" />
+    </Array>
+  </Properties>
+</Properties>

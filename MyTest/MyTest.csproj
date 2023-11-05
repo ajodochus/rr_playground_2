@@ -196,6 +196,9 @@
       <UserCode>true</UserCode>
       <id>801b6402-1398-4509-a3d1-6d3fd9ea0358</id>
     </Compile>
+    <Compile Include="utils\data_connector_handler.cs">
+      <id>db2fa768-9f2d-49c4-b159-ddc2f3b37793</id>
+    </Compile>
     <Compile Include="utils\get_string_from_pic.cs">
       <id>76af56c4-b049-4371-97bf-cc4c9b23e609</id>
     </Compile>

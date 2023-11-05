@@ -17,6 +17,11 @@
 			name="teardown">
 			</teardown>
 			<testcase
+			datasource="NewConnector"
+			id="47d852e8-b415-4cdd-bcb0-c4986966e4b9"
+			name="data_conntector_in_usercod">
+			</testcase>
+			<testcase
 			id="6148297d-81b6-45e6-a8cb-2ab9f4c02439"
 			name="stop_sut">
 			</testcase>
@@ -32,6 +37,12 @@
 			name="file_convert_stuff"
 			ref="2615ee37-af8b-4d6b-bfa0-f48686be1d47"
 			type="Recording">
+			</testmodule>
+			<testmodule
+			id="96947f9d-45bd-4959-a747-2364b35b9035"
+			name="data_connector_handler"
+			ref="b3faa843-55e5-40f9-b89a-c5714657e342"
+			type="UserCode">
 			</testmodule>
 			<testcase
 			id="aa0dc063-a28b-4b64-baae-4d79da698d0e"
@@ -119,6 +130,14 @@
 						</testmodule>
 					</testcase>
 					<testcase
+					id="47d852e8-b415-4cdd-bcb0-c4986966e4b9"
+					name="data_conntector_in_usercod">
+						<testmodule
+						id="96947f9d-45bd-4959-a747-2364b35b9035"
+						name="data_connector_handler">
+						</testmodule>
+					</testcase>
+					<testcase
 					id="6148297d-81b6-45e6-a8cb-2ab9f4c02439"
 					name="stop_sut">
 						<teardown
@@ -135,19 +154,66 @@
 		</childhierarchy>
 	</testsuiteentryhierarchy>
 	<datasources>
+		<DataSource
+		id="e3c68cab-1794-46df-b849-9c08031c6999"
+		lastknownrowcount="3"
+		name="NewConnector"
+		type="Ranorex.Core.Data.SimpleDataConnector">
+			<lastknowncolumns>
+				<column>
+					name
+				</column>
+				<column>
+					number
+				</column>
+			</lastknowncolumns>
+			<maskedcolumns>
+			</maskedcolumns>
+			<table>
+				<tr>
+					<th>
+						name
+					</th>
+					<th>
+						number
+					</th>
+				</tr>
+				<tr>
+					<td>
+						albert
+					</td>
+					<td>
+						1
+					</td>
+				</tr>
+				<tr>
+					<td>
+						berta
+					</td>
+					<td>
+						2
+					</td>
+				</tr>
+				<tr>
+					<td>
+						cecilia
+					</td>
+					<td>
+						3
+					</td>
+				</tr>
+			</table>
+		</DataSource>
 	</datasources>
 	<testconfigurations
 	default="TestRun">
 		<testconfiguration
 		name="TestRun">
 			<testcontainer
-			id="1e6a58e6-6544-4ccd-a18d-672f5a0fe50a">
+			id="47d852e8-b415-4cdd-bcb0-c4986966e4b9">
 			</testcontainer>
 			<testcontainer
 			id="dd9c21ab-b5ed-4324-887d-dec055d0ff95">
-			</testcontainer>
-			<testcontainer
-			id="f4da878b-5071-4e59-ab5a-7a66bbfa0374">
 			</testcontainer>
 		</testconfiguration>
 	</testconfigurations>

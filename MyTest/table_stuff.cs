@@ -79,9 +79,6 @@ namespace MyTest
 
             Init();
 
-            compare_xml_file_with_xml_code();
-            Delay.Milliseconds(0);
-            
             find_single_cell_value(repo.Form1.table_dataInfo, "669-444-7777");
             Delay.Milliseconds(0);
             

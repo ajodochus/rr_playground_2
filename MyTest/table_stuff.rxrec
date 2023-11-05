@@ -29,21 +29,6 @@ mode="Global">
 		classname="Table_handler"
 		enabled="True"
 		isexternaltestmethod="False"
-		methodname="compare_xml_file_with_xml_code"
-		namespace="MyTest.utils"
-		optional="False">
-			<comment>
-			</comment>
-			<bindings>
-			</bindings>
-			<arguments
-			id="9b7fad4a-6472-44e4-b058-95761e80c47f">
-			</arguments>
-		</userrecorditem>
-		<userrecorditem
-		classname="Table_handler"
-		enabled="True"
-		isexternaltestmethod="False"
 		methodname="find_single_cell_value"
 		namespace="MyTest.utils"
 		optional="False">

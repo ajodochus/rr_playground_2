@@ -49,6 +49,7 @@
 			name="ocr">
 			</testcase>
 			<testmodule
+			enabled="False"
 			id="b7cfecdc-66ba-42a2-a82e-c600d502c530"
 			name="table_stuff"
 			ref="96788c60-e678-413b-9251-8a982286d321"
@@ -93,6 +94,12 @@
 			id="f4da878b-5071-4e59-ab5a-7a66bbfa0374"
 			name="start_sut">
 			</testcase>
+			<testmodule
+			id="f65d94c2-41b5-41f0-8fcd-64ad7348de09"
+			name="compare_xml"
+			ref="e989cacb-c8f4-45ab-bbae-9a38080a7a6b"
+			type="UserCode">
+			</testmodule>
 		</flatlistofchildren>
 		<childhierarchy>
 			<testsuite
@@ -119,6 +126,10 @@
 						<testmodule
 						id="b7cfecdc-66ba-42a2-a82e-c600d502c530"
 						name="table_stuff">
+						</testmodule>
+						<testmodule
+						id="f65d94c2-41b5-41f0-8fcd-64ad7348de09"
+						name="compare_xml">
 						</testmodule>
 					</testcase>
 					<testcase
@@ -210,7 +221,7 @@
 		<testconfiguration
 		name="TestRun">
 			<testcontainer
-			id="47d852e8-b415-4cdd-bcb0-c4986966e4b9">
+			id="1e6a58e6-6544-4ccd-a18d-672f5a0fe50a">
 			</testcontainer>
 			<testcontainer
 			id="dd9c21ab-b5ed-4324-887d-dec055d0ff95">

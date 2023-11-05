@@ -196,6 +196,9 @@
       <UserCode>true</UserCode>
       <id>801b6402-1398-4509-a3d1-6d3fd9ea0358</id>
     </Compile>
+    <Compile Include="utils\compare_xml.cs">
+      <id>19f6179b-e32a-48e7-9369-ee92a99f6482</id>
+    </Compile>
     <Compile Include="utils\data_connector_handler.cs">
       <id>db2fa768-9f2d-49c4-b159-ddc2f3b37793</id>
     </Compile>

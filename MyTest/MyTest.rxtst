@@ -2,26 +2,47 @@
 <testsuitedoc>
 	<testsuiteentryhierarchy>
 		<flatlistofchildren>
+			<testmodule
+			id="0e636c18-40f0-4239-b295-16d000744a56"
+			name="start_sut"
+			ref="1c1ba6f8-b396-47cb-a522-0dd66aa790b8"
+			type="UserCode">
+			</testmodule>
 			<testcase
 			id="1e6a58e6-6544-4ccd-a18d-672f5a0fe50a"
-			name="TestCase">
+			name="playground">
 			</testcase>
-			<testmodule
-			id="441b9adb-a50a-4dc0-b71d-85469ec7f4c0"
-			name="Recording1"
-			ref="df05682b-3b3f-4b2f-9cf7-5b9bad055212"
-			type="Recording">
-			</testmodule>
+			<teardown
+			id="394d9c71-8b73-42bd-87d3-45e5b11baec2"
+			name="teardown">
+			</teardown>
+			<testcase
+			id="6148297d-81b6-45e6-a8cb-2ab9f4c02439"
+			name="stop_sut">
+			</testcase>
 			<testmodule
 			id="8c1557a4-fe08-4c5c-86ef-990e4fb3aa07"
 			name="get_string_from_ocr"
 			ref="c52d1b15-97b2-4978-aff0-477d872775e7"
 			type="Recording">
 			</testmodule>
+			<testmodule
+			enabled="False"
+			id="91a766c9-fd39-48d9-9b8d-a55cdb9b70d4"
+			name="file_convert_stuff"
+			ref="2615ee37-af8b-4d6b-bfa0-f48686be1d47"
+			type="Recording">
+			</testmodule>
 			<testcase
 			id="aa0dc063-a28b-4b64-baae-4d79da698d0e"
 			name="ocr">
 			</testcase>
+			<testmodule
+			id="b7cfecdc-66ba-42a2-a82e-c600d502c530"
+			name="table_stuff"
+			ref="96788c60-e678-413b-9251-8a982286d321"
+			type="Recording">
+			</testmodule>
 			<testcase
 			id="dd9c21ab-b5ed-4324-887d-dec055d0ff95"
 			name="MyTest"
@@ -51,6 +72,16 @@
 			reportwriteinterval="30000ms"
 			singlereportpdfdirectory="SingleReportPDF">
 			</testsuite>
+			<testmodule
+			id="e8e694c6-56b4-4eb2-b619-c05aa05c5c22"
+			name="stop_sut"
+			ref="95c94189-ce93-45ba-b79b-d9e3e92d6ed5"
+			type="UserCode">
+			</testmodule>
+			<testcase
+			id="f4da878b-5071-4e59-ab5a-7a66bbfa0374"
+			name="start_sut">
+			</testcase>
 		</flatlistofchildren>
 		<childhierarchy>
 			<testsuite
@@ -60,11 +91,23 @@
 				id="dd9c21ab-b5ed-4324-887d-dec055d0ff95"
 				name="MyTest">
 					<testcase
-					id="1e6a58e6-6544-4ccd-a18d-672f5a0fe50a"
-					name="TestCase">
+					id="f4da878b-5071-4e59-ab5a-7a66bbfa0374"
+					name="start_sut">
 						<testmodule
-						id="441b9adb-a50a-4dc0-b71d-85469ec7f4c0"
-						name="Recording1">
+						id="0e636c18-40f0-4239-b295-16d000744a56"
+						name="start_sut">
+						</testmodule>
+					</testcase>
+					<testcase
+					id="1e6a58e6-6544-4ccd-a18d-672f5a0fe50a"
+					name="playground">
+						<testmodule
+						id="91a766c9-fd39-48d9-9b8d-a55cdb9b70d4"
+						name="file_convert_stuff">
+						</testmodule>
+						<testmodule
+						id="b7cfecdc-66ba-42a2-a82e-c600d502c530"
+						name="table_stuff">
 						</testmodule>
 					</testcase>
 					<testcase
@@ -74,6 +117,18 @@
 						id="8c1557a4-fe08-4c5c-86ef-990e4fb3aa07"
 						name="get_string_from_ocr">
 						</testmodule>
+					</testcase>
+					<testcase
+					id="6148297d-81b6-45e6-a8cb-2ab9f4c02439"
+					name="stop_sut">
+						<teardown
+						id="394d9c71-8b73-42bd-87d3-45e5b11baec2"
+						name="teardown">
+							<testmodule
+							id="e8e694c6-56b4-4eb2-b619-c05aa05c5c22"
+							name="stop_sut">
+							</testmodule>
+						</teardown>
 					</testcase>
 				</testcase>
 			</testsuite>
@@ -85,6 +140,15 @@
 	default="TestRun">
 		<testconfiguration
 		name="TestRun">
+			<testcontainer
+			id="1e6a58e6-6544-4ccd-a18d-672f5a0fe50a">
+			</testcontainer>
+			<testcontainer
+			id="dd9c21ab-b5ed-4324-887d-dec055d0ff95">
+			</testcontainer>
+			<testcontainer
+			id="f4da878b-5071-4e59-ab5a-7a66bbfa0374">
+			</testcontainer>
 		</testconfiguration>
 	</testconfigurations>
 	<references>

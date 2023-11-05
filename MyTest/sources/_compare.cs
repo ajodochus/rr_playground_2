@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<root Timestamp="30929731,4219772624">
+	<Node Name="\autoexport">
+		<Component Name="11111111111111111111111111111" Path="\autoexport" Id="A2AE75BAB12B4178850CA9E7524A43D3" TypeId="60AAC778619D4B40ABA40AF8245A6496" State="0" MultiEdit="N">
+			<Data D0="222222222222222222222222222" D1="" D2="" D3="" D4="" D5="" D6="" D7="" D8="" D9=""/>
+			<Versions>
+				<Version Number="333333333333333333333" Id="8A5EB34282314EA69C28E4642D715E86" TimestampLocal="2021-03-10T11:26:18+0100" TimestampUTC="2021-03-10T10:26:18Z" UserDefined="" UserId="7F9407984441471394811224B8CD5FE7" UserName="VersionDog [Superadministrator]" ComputerName="VMWARE.BWW10" Comment="" ChangeReason="" SubDirArchive="20210310.000" StateArchive="45"/>
+			</Versions>
+		</Component>
+		<Component Name="komp1" Path="\autoexport" Id="94245B8927D0429AA1F2F979EE5BC7AC" TypeId="60AAC778619D4B40ABA40AF8245A6496" State="0" MultiEdit="N">
+			<Data D0="" D1="" D2="" D3="" D4="" D5="" D6="" D7="" D8="" D9=""/>
+			<Versions>
+				<Version Number="1" Id="E9BB8171D0F64760A49890582F67B310" TimestampLocal="2021-03-03T16:28:16+0100" TimestampUTC="2021-03-03T15:28:16Z" UserDefined="" UserId="7F9407984441471394811224B8CD5FE7" UserName="VersionDog [Superadministrator]" ComputerName="VMWARE.BWW10" Comment="" ChangeReason="" SubDirArchive="20210303.000" StateArchive="45"/>
+				<Version Number="2" Id="8DC2C2253E8D492099B50BF0885CA924" TimestampLocal="2021-03-03T16:35:07+0100" TimestampUTC="2021-03-03T15:35:07Z" UserDefined="" UserId="7F9407984441471394811224B8CD5FE7" UserName="VersionDog [Superadministrator]" ComputerName="VMWARE.BWW10" Comment="" ChangeReason="" SubDirArchive="20210303.001" StateArchive="45"/>
+			</Versions>
+		</Component>
+	</Node>
+	<Node Name="\usera">
+		<Component Name="ASCII" Path="\usera" Id="F51E5B2EAF1645AB8EB28207BEDCCF1F" TypeId="60AAC778619D4B40ABA40AF8245A6496" State="0" MultiEdit="N">
+			<Data D0="" D1="" D2="" D3="" D4="" D5="" D6="" D7="" D8="" D9=""/>
+			<Versions>
+				<Version Number="1" Id="6EE12F3606BB4591B6D507DACDC3166F" TimestampLocal="2021-03-10T12:51:24+0100" TimestampUTC="2021-03-10T11:51:24Z" UserDefined="" UserId="7F9407984441471394811224B8CD5FE7" UserName="VersionDog [Superadministrator]" ComputerName="VMWARE.BWW10" Comment="" ChangeReason="" SubDirArchive="20210310.000" StateArchive="45"/>
+				<Version Number="2" Id="8725AC94D7274737A88FA25B091E57F1" TimestampLocal="2021-03-11T08:56:11+0100" TimestampUTC="2021-03-11T07:56:11Z" UserDefined="" UserId="7F9407984441471394811224B8CD5FE7" UserName="VersionDog [Superadministrator]" ComputerName="VMWARE.BWW10" Comment="" ChangeReason="" SubDirArchive="20210311.000" StateArchive="45"/>
+			</Versions>
+		</Component>
+	</Node>
+</root>

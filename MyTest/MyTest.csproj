@@ -139,6 +139,18 @@
     <Compile Include="AssemblyInfo.cs">
       <id>6ab6f0f9-e20c-4568-8579-19d26315105f</id>
     </Compile>
+    <Compile Include="file_convert_stuff.cs">
+      <BoundTo>d9950023-9f24-4f34-bed1-74f4d58d512c</BoundTo>
+      <DependentUpon>file_convert_stuff.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+      <id>503b6ad6-8609-4694-88c7-c93d68bc1111</id>
+    </Compile>
+    <Compile Include="file_convert_stuff.UserCode.cs">
+      <BoundTo>d9950023-9f24-4f34-bed1-74f4d58d512c</BoundTo>
+      <DependentUpon>file_convert_stuff.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+      <id>02832da4-29e1-4314-98ed-461c28d4de6a</id>
+    </Compile>
     <Compile Include="MyTestRepository.cs">
       <BoundTo>331d52e4-3f98-45f2-bca0-ab87c248a574</BoundTo>
       <DependentUpon>MyTestRepository.rxrep</DependentUpon>
@@ -172,13 +184,42 @@
       <UserCode>true</UserCode>
       <id>17efa69d-872a-4a41-b022-b271be3d34ed</id>
     </Compile>
+    <Compile Include="table_stuff.cs">
+      <BoundTo>0bb2e2b8-4220-4a35-b14d-4925fe309bdd</BoundTo>
+      <DependentUpon>table_stuff.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+      <id>3dcb038a-d4dd-4d7c-92f8-64891e608391</id>
+    </Compile>
+    <Compile Include="table_stuff.UserCode.cs">
+      <BoundTo>0bb2e2b8-4220-4a35-b14d-4925fe309bdd</BoundTo>
+      <DependentUpon>table_stuff.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+      <id>801b6402-1398-4509-a3d1-6d3fd9ea0358</id>
+    </Compile>
     <Compile Include="utils\get_string_from_pic.cs">
       <id>76af56c4-b049-4371-97bf-cc4c9b23e609</id>
+    </Compile>
+    <Compile Include="utils\json_handler.cs">
+      <id>30e2864c-405b-42e6-b66e-ed4a3790035f</id>
+    </Compile>
+    <Compile Include="utils\start_sut.cs">
+      <id>d43e0bc1-88d2-4451-b8b6-632fadeac993</id>
+    </Compile>
+    <Compile Include="utils\stop_sut.cs">
+      <id>8573f8ca-bd77-44c9-97df-ae79c695e7b6</id>
+    </Compile>
+    <Compile Include="utils\table_handler.cs">
+      <id>047c9e18-71bb-4b25-a354-f5a83ca9e9b9</id>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
       <id>6bebe71d-ded7-401e-adad-eccb50566aa1</id>
+    </None>
+    <None Include="file_convert_stuff.rxrec">
+      <BoundTo>331d52e4-3f98-45f2-bca0-ab87c248a574</BoundTo>
+      <id>d9950023-9f24-4f34-bed1-74f4d58d512c</id>
+      <recordtableid>2615ee37-af8b-4d6b-bfa0-f48686be1d47</recordtableid>
     </None>
     <None Include="MyTestRepository.rximg">
       <BoundTo>331d52e4-3f98-45f2-bca0-ab87c248a574</BoundTo>
@@ -219,6 +260,31 @@
       <id>95aa20eb-a5e4-4b52-bf52-21251cac9a76</id>
       <recordtableid>df05682b-3b3f-4b2f-9cf7-5b9bad055212</recordtableid>
     </None>
+    <None Include="sources\Projektbaum_Sperrstatus.xml">
+      <id>ece8019b-836c-4ffb-a155-c95af2ce0389</id>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="sources\_compare.xml">
+      <id>70071450-bdae-46e9-aa47-1934b7a6b4da</id>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="sources\_source.xml">
+      <id>8ce9b03c-ad3d-45f5-81c6-2a6bf143e196</id>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="table_stuff.rxrec">
+      <BoundTo>331d52e4-3f98-45f2-bca0-ab87c248a574</BoundTo>
+      <id>0bb2e2b8-4220-4a35-b14d-4925fe309bdd</id>
+      <recordtableid>96788c60-e678-413b-9251-8a982286d321</recordtableid>
+    </None>
+    <None Include="utils\sut\data.csv">
+      <id>815133f4-4c5a-4058-bde2-b13ed0727080</id>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="utils\sut\target_app_for_ocr_test.exe">
+      <id>c4d9dd5c-8a6f-4bf4-8482-efcc3922b892</id>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="MyTest.rxtmg">
@@ -231,11 +297,17 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="sources">
+      <id>fc7acc16-b1fe-49a2-87d5-f1708eba9036</id>
+    </Folder>
     <Folder Include="ocr">
       <id>5586e239-070a-44d1-81a8-4f6aa62b4b82</id>
     </Folder>
     <Folder Include="utils">
       <id>31c94dfd-a16b-49e6-9a0e-212ae9a66d9c</id>
+    </Folder>
+    <Folder Include="utils\sut">
+      <id>307b0b06-67ba-4ddd-accb-85f7f7f0ad42</id>
     </Folder>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

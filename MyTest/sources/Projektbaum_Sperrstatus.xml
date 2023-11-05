@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root Timestamp="30929732,1301025328">
+	<Component Name="ASCII" Path="\autoexport" Id="A2AE75BAB12B4178850CA9E7524A43D3" TypeId="60AAC778619D4B40ABA40AF8245A6496" State="16" MultiEdit="N">
+		<Data D0="" D1="" D2="" D3="" D4="" D5="" D6="" D7="" D8="" D9=""/>
+		<LockState State="1" UserId="7F9407984441471394811224B8CD5FE7" Username="VersionDog [Superadministrator]" EmailAddress="" TimeStampLocal="2021-12-17T13:47:34+0100" TimeStampUTC="2021-12-17T12:47:34Z" Days="0" ComputerName="VMWARE.BWW10" Comment="gesperrt"/>
+	</Component>
+	<Component Name="komp1" Path="\autoexport" Id="94245B8927D0429AA1F2F979EE5BC7AC" TypeId="60AAC778619D4B40ABA40AF8245A6496" State="32" MultiEdit="N">
+		<Data D0="" D1="" D2="" D3="" D4="" D5="" D6="" D7="" D8="" D9=""/>
+		<LockState State="2" UserId="7F9407984441471394811224B8CD5FE7" Username="VersionDog [Superadministrator]" EmailAddress="" TimeStampLocal="2021-12-17T13:47:45+0100" TimeStampUTC="2021-12-17T12:47:45Z" Days="0" ComputerName="VMWARE.BWW10" Comment="in Bearbeitung"/>
+	</Component>
+	<Component Name="S7-400F" Path="\AUVESY\Siemens\Simatic S7\Inbetriebnahme" Id="E3084EFAD8A14EB3A2A408EA8DAD8D36" TypeId="2691BA5A90ED4C5887D4BDDD1F8C9A48" State="0" MultiEdit="N">
+		<Data D0="" D1="" D2="" D3="" D4="" D5="" D6="" D7="" D8="" D9=""/>
+	</Component>
+	<Component Name="Json" Path="\json" Id="2EEAE9D5626F43CA8AF6C565E17DB2DF" TypeId="6F3117348C4B42E0BE66D57ABF7FAA3A" State="0" MultiEdit="N">
+		<Data D0="" D1="" D2="" D3="" D4="" D5="" D6="" D7="" D8="" D9=""/>
+	</Component>
+	<Component Name="Simatic S7" Path="\s7" Id="CED94C37A35E4887A3E68F08EB33B81E" TypeId="2691BA5A90ED4C5887D4BDDD1F8C9A48" State="0" MultiEdit="N">
+		<Data D0="" D1="" D2="" D3="" D4="" D5="" D6="" D7="" D8="" D9=""/>
+	</Component>
+	<Component Name="Simatic S7 Library" Path="\s7" Id="EFD78CFA5F1146DD913E58B938C2F06E" TypeId="C6DB968AE16E49E1A29EA8FBACE7840B" State="0" MultiEdit="N">
+		<Data D0="" D1="" D2="" D3="" D4="" D5="" D6="" D7="" D8="" D9=""/>
+	</Component>
+	<Component Name="ASCII" Path="\usera" Id="F51E5B2EAF1645AB8EB28207BEDCCF1F" TypeId="60AAC778619D4B40ABA40AF8245A6496" State="0" MultiEdit="N">
+		<Data D0="" D1="" D2="" D3="" D4="" D5="" D6="" D7="" D8="" D9=""/>
+	</Component>
+</root>

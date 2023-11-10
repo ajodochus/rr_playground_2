@@ -51,8 +51,26 @@ namespace postgres
 			connection.Open();
 			NpgsqlCommand command = new NpgsqlCommand("SELECT  COUNT(*) FROM mytable", connection);
 			Int64 count = (Int64)command.ExecuteScalar();
-			connection.Close();		
+			connection.Close();
 			return count.ToString();
+		}
+		
+		public static async void create_table_teachers(){
+			NpgsqlConnection con = connect_to_db();
+			con.Open();
+			
+			var cmd = new NpgsqlCommand();
+			cmd.Connection = con;
+
+			cmd.CommandText = @"DROP TABLE IF EXISTS teachers";
+			await cmd.ExecuteNonQueryAsync();
+			cmd.CommandText= "CREATE TABLE teachers (id SERIAL PRIMARY KEY," +
+				"first_name VARCHAR(255)," +
+				"last_name VARCHAR(255)," +
+				"subject VARCHAR(255)," +
+				"salary INT)";
+			await cmd.ExecuteNonQueryAsync();
+			con.Close();
 		}
 		
 		private static NpgsqlConnection connect_to_db(){
@@ -60,5 +78,7 @@ namespace postgres
 			connection = new NpgsqlConnection(connstring);
 			return connection;
 		}
+		
+		
 	}
 }

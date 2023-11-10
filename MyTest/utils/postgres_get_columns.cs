@@ -43,7 +43,8 @@ namespace MyTest.utils
         /// that will in turn invoke this method.</remarks>
         void ITestModule.Run()
         {
-        	Ranorex.Report.Info("count columns: " + postgres.postgres_handler.count_columns());
+        	//Ranorex.Report.Info("count columns: " + postgres.postgres_handler.count_columns_of_mytable());
+        	 postgres_handler.get_values_from_column();
         }
     }
 }

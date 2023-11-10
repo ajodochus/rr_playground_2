@@ -27,7 +27,7 @@ mode="Global">
 	<recorditems>
 		<userrecorditem
 		classname="get_string_from_ocr"
-		enabled="True"
+		enabled="False"
 		isexternaltestmethod="False"
 		methodname="start_SUT"
 		namespace="MyTest.ocr"
@@ -120,7 +120,7 @@ mode="Global">
 		<userrecorditem
 		autogenmethod="True"
 		classname="get_string_from_ocr"
-		enabled="True"
+		enabled="False"
 		isexternaltestmethod="False"
 		methodname="stop_SUT"
 		namespace="playground.ocr"

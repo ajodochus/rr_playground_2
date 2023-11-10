@@ -47,7 +47,7 @@ namespace MyTest.ocr
 		{
 			
 			Ranorex.Report.Info("exec dir: " + source_path);
-			if(Directory.Exists(ocr_folder)){
+			if(Directory.Exists(Path.Combine(source_path, @"ocr\netcoreapp3.0"))){
 				Directory.Delete(Path.Combine(source_path, @"ocr\netcoreapp3.0"), true);
 			}
 

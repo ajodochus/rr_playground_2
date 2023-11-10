@@ -79,8 +79,8 @@ namespace MyTest.ocr
 
             Init();
 
-            start_SUT();
-            Delay.Milliseconds(0);
+            //start_SUT();
+            //Delay.Milliseconds(0);
             
             Report.Log(ReportLevel.Info, "Invoke action", "Invoking EnsureVisible() on item 'Form1.timestamps'.", repo.Form1.timestampsInfo, new RecordItemIndex(1));
             repo.Form1.timestamps.EnsureVisible();
@@ -93,8 +93,8 @@ namespace MyTest.ocr
             ocr_element(repo.Form1.timestampsInfo);
             Delay.Milliseconds(0);
             
-            stop_SUT();
-            Delay.Milliseconds(0);
+            //stop_SUT();
+            //Delay.Milliseconds(0);
             
         }
 

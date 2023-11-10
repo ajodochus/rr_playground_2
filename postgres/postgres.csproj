@@ -15,6 +15,7 @@
     <projectdefaultrepository>01d983ab-6d6c-485c-a4ab-54cd8655709b</projectdefaultrepository>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <StartAction>Project</StartAction>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -179,27 +180,20 @@
       <RepositoryCode>true</RepositoryCode>
       <id>c1653edd-851f-49fd-bd59-cc4519895f10</id>
     </Compile>
+    <Compile Include="postgres_handler.cs">
+      <id>8f71e0e4-0801-4936-a7c5-8daee99c14fc</id>
+    </Compile>
     <Compile Include="Program.cs">
       <id>4bd250cb-e997-4f51-897f-357b6753a46b</id>
-    </Compile>
-    <Compile Include="Recording1.cs">
-      <BoundTo>dba75d4f-7bcc-46c6-a458-0af2069a7be9</BoundTo>
-      <DependentUpon>Recording1.rxrec</DependentUpon>
-      <RecorderCode>true</RecorderCode>
-      <id>43fb5e61-3db9-441d-ad2c-052e8dda3c51</id>
-    </Compile>
-    <Compile Include="Recording1.UserCode.cs">
-      <BoundTo>dba75d4f-7bcc-46c6-a458-0af2069a7be9</BoundTo>
-      <DependentUpon>Recording1.rxrec</DependentUpon>
-      <UserCode>true</UserCode>
-      <id>ad7ef7f7-1f2a-45b7-92a2-f5cf29d2b042</id>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
       <id>c976ce3f-6135-4e7e-84a6-51beb1a2245c</id>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <id>0a0d4265-704f-4b58-a890-884e1b780179</id>
+    </None>
     <None Include="postgresRepository.rximg">
       <BoundTo>01d983ab-6d6c-485c-a4ab-54cd8655709b</BoundTo>
       <DependentUpon>postgresRepository.rxrep</DependentUpon>
@@ -210,11 +204,6 @@
       <id>01d983ab-6d6c-485c-a4ab-54cd8655709b</id>
       <repoid>ddae3bc4-b971-4170-b70f-55963e6c7b30</repoid>
       <reporootid>d6385aa8-0198-4a35-ae67-0763b5a23808</reporootid>
-    </None>
-    <None Include="Recording1.rxrec">
-      <BoundTo>01d983ab-6d6c-485c-a4ab-54cd8655709b</BoundTo>
-      <id>dba75d4f-7bcc-46c6-a458-0af2069a7be9</id>
-      <recordtableid>3d84b01f-651d-428c-9a05-ccfa4ae904c9</recordtableid>
     </None>
   </ItemGroup>
   <ItemGroup>

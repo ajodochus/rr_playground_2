@@ -212,6 +212,9 @@
     <Compile Include="utils\json_handler.cs">
       <id>30e2864c-405b-42e6-b66e-ed4a3790035f</id>
     </Compile>
+    <Compile Include="utils\postgres_get_columns.cs">
+      <id>baf6b108-f4a0-455d-9b0f-38d1b96bb67b</id>
+    </Compile>
     <Compile Include="utils\start_sut.cs">
       <id>d43e0bc1-88d2-4451-b8b6-632fadeac993</id>
     </Compile>
@@ -319,6 +322,12 @@
     <Folder Include="utils\sut">
       <id>307b0b06-67ba-4ddd-accb-85f7f7f0ad42</id>
     </Folder>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\postgres\postgres.csproj">
+      <Project>{A0C1E706-1782-4160-B1EC-432D20EEDF80}</Project>
+      <Name>postgres</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(RanorexTargetsPath)" Condition="Exists('$(RanorexTargetsPath)')" />

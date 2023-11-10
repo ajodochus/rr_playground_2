@@ -246,6 +246,9 @@
 			C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\mscorlib.dll
 		</reference>
 		<reference>
+			DotNetZip.dll
+		</reference>
+		<reference>
 			Newtonsoft.Json.dll
 		</reference>
 		<reference>

@@ -38,6 +38,9 @@
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetZip">
+      <HintPath>..\packages\DotNetZip.1.16.0\lib\net40\DotNetZip.dll</HintPath>
+    </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -252,7 +255,7 @@
       <id>b1aa56a5-4ccf-4f79-95d6-8e7f112c8938</id>
     </None>
     <None Include="ocr\netcoreapp3.0.zip">
-      <id>b116e361-3662-4af9-9601-61dcba920533</id>
+      <id>11c146cb-91c6-49ba-aeb6-35e9b37dc988</id>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ocr\target_app_for_ocr_test.exe">

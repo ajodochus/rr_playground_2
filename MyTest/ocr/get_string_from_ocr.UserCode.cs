@@ -22,6 +22,9 @@ using Ranorex.Core.Testing;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
+using Ionic.Zip;
+
+
 
 namespace MyTest.ocr
 {
@@ -40,6 +43,7 @@ namespace MyTest.ocr
 		
 		private void Init()
 		{
+			Ranorex.Report.Info("start");
 			Ranorex.Report.Info("ocr folder: " + ocr_folder);
 		}
 		
@@ -47,11 +51,26 @@ namespace MyTest.ocr
 		{
 			
 			Ranorex.Report.Info("exec dir: " + source_path);
-			if(Directory.Exists(Path.Combine(source_path, @"ocr\netcoreapp3.0"))){
-				Directory.Delete(Path.Combine(source_path, @"ocr\netcoreapp3.0"), true);
-			}
+//			if(Directory.Exists(Path.Combine(source_path, @"ocr\netcoreapp3.0"))){
+//				Directory.Delete(Path.Combine(source_path, @"ocr\netcoreapp3.0"), true);
+//			}
+//			if(File.Exists(png_destination)){
+//				File.Delete(png_destination);
+//			}
 
-			System.IO.Compression.ZipFile.ExtractToDirectory(Path.Combine(ocr_folder, ocr_reader_zip), ocr_folder);
+//			System.IO.Compression.ZipFile.ExtractToDirectory(Path.Combine(ocr_folder, ocr_reader_zip), ocr_folder);
+			
+			using (Ionic.Zip.ZipFile zip = Ionic.Zip.ZipFile.Read(Path.Combine(ocr_folder, ocr_reader_zip)))
+			{
+				zip.ExtractAll(Path.Combine(ocr_folder, @"netcoreapp3.0"), ExtractExistingFileAction.OverwriteSilently);
+
+			}
+			
+			
+			
+			
+			
+			
 			Ranorex.Unknown repo_element = ItemInfo.CreateAdapter<Ranorex.Unknown>(true);
 
 			//Ranorex.Unknown pictureBox1  = repo.Form1.pic_box_hello_worldInfo.CreateAdapter<Ranorex.Unknown>(true);
@@ -86,7 +105,7 @@ namespace MyTest.ocr
 
 			startInfo.Arguments = "\"" + png_destination + "\"";
 
-				startInfo.UseShellExecute = false;
+			startInfo.UseShellExecute = false;
 			startInfo.RedirectStandardOutput = true;
 			startInfo.CreateNoWindow = true;
 			

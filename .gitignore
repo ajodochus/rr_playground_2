@@ -2,3 +2,5 @@ MyTest/bin/
 MyTest/Reports/
 MyTest/obj/
 postgres/obj/
+postgres/postgres.csproj.rxuser
+postgres/postgres.csproj.pref

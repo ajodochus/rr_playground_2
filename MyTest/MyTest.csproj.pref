@@ -1,8 +1,6 @@
 ﻿<Properties>
   <Array name="active" />
-  <Array name="bookmarks">
-    <Element value="Breakpoint|D:\rr_playground_2\MyTest\ocr\get_string_from_ocr.UserCode.cs|96|4|True|Break||" />
-  </Array>
+  <Array name="bookmarks" />
   <Array name="files">
     <Element value="MyTest.rxtst" />
     <Element value="ocr\get_string_from_ocr.rxrec" />

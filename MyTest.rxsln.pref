@@ -11,6 +11,6 @@
       <string>5586e239-070a-44d1-81a8-4f6aa62b4b82</string>
     </ArrayOfString>
   </SerializedValue>
-  <ProjectBrowserState value="[Solution MyTest[MyTest[ocr[]sources[]Recording1.rxrec[]]]]&#xD;&#xA;Solution MyTest\MyTest\MyTest.rxtst&#xD;&#xA;Solution MyTest" />
+  <ProjectBrowserState value="[Solution MyTest[postgres[References[]]]]&#xD;&#xA;Solution MyTest\postgres\References&#xD;&#xA;Solution MyTest\postgres\References\Ranorex.Plugin.WinForms.Core" />
   <StartupProject value="{81948032-649B-4542-9BF3-7072FFCCF8C0}" />
 </Properties>

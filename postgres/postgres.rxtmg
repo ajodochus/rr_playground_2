@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modulegroupdoc>
+  <testsuiteentryhierarchy>
+    <flatlistofchildren>
+      <modulegroups
+      name="postgres"
+      id="821cfaaa-af9c-4310-a92b-54958388751f"/>
+    </flatlistofchildren>
+    <childhierarchy>
+      <modulegroups
+      name="postgres"
+      id="821cfaaa-af9c-4310-a92b-54958388751f"/>
+    </childhierarchy>
+  </testsuiteentryhierarchy>
+</modulegroupdoc>

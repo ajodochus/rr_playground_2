@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<repository
+name="postgresRepository"
+id="ddae3bc4-b971-4170-b70f-55963e6c7b30">
+  <codegen
+  classname="postgresRepository"
+  namespace="postgres"/>
+  <rootfolder
+  name="Root"
+  id="d6385aa8-0198-4a35-ae67-0763b5a23808"
+  searchtimeout="30000ms"
+  capname="unknown"
+  isrooted="True"
+  usecache="True">
+    <basepath/>
+  </rootfolder>
+  <variables/>
+</repository>

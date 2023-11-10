@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<recordtable
+embeddedrepository="False"
+id="3d84b01f-651d-428c-9a05-ccfa4ae904c9"
+mode="Global">
+	<repeatcount>
+		1
+	</repeatcount>
+	<turbomode>
+		False
+	</turbomode>
+	<genreport>
+		True
+	</genreport>
+	<speedfactor>
+		1
+	</speedfactor>
+	<useDefaultItemLogging>
+		True
+	</useDefaultItemLogging>
+	<codegen
+	classname="Recording1"
+	namespace="postgres">
+	</codegen>
+	<variables>
+	</variables>
+	<recorditems>
+	</recorditems>
+	<repository
+	id="ddae3bc4-b971-4170-b70f-55963e6c7b30"
+	name="postgresRepository"
+	relativepath="postgresRepository.rxrep">
+		<codegen
+		classname="postgresRepository"
+		namespace="postgres">
+		</codegen>
+		<rootfolder
+		id="d6385aa8-0198-4a35-ae67-0763b5a23808"
+		name="_rootdummy_">
+		</rootfolder>
+	</repository>
+	<usercodefile
+	lang="CSharp">
+		Recording1.UserCode.cs
+	</usercodefile>
+	<references>
+	</references>
+</recordtable>

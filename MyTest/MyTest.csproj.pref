@@ -1,0 +1,9 @@
+﻿<Properties>
+  <Array name="active" />
+  <Array name="bookmarks" />
+  <Array name="files">
+    <Element value="MyTest.rxtst" />
+    <Element value="utils\start_sut.cs" />
+  </Array>
+  <Properties name="projectSavedData" />
+</Properties>

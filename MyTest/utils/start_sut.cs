@@ -34,9 +34,9 @@ namespace MyTest.utils
 		/// </summary>
 		public start_sut()
 		{
-			// Do not delete - a parameterless constructor is required!
+			// Do not delete - a parameterless constructor is required!D:\projects\target_app_for_ocr_test\target_app_for_ocr_test\Program.cs
 		}
-		static string sut_folder = Path.Combine(System.IO.Directory.GetCurrentDirectory(), @"utils\sut");
+		static string sut_folder = Path.Combine(System.IO.Directory.GetCurrentDirectory(), @"..\..\..\target_app_for_ocr_test\target_app_for_ocr_test\bin\debug");
 		static	string sut = Path.Combine(sut_folder, "target_app_for_ocr_test.exe");
 		
 		void ITestModule.Run()

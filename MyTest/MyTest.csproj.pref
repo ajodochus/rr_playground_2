@@ -3,11 +3,8 @@
   <Array name="bookmarks" />
   <Array name="files">
     <Element value="MyTest.rxtst" />
-    <Element value="ocr\get_string_from_ocr.rxrec" />
-    <Element value="ocr\get_string_from_ocr.UserCode.cs" />
+    <Element value="utils\postgres_get_columns.cs" />
     <Element value="Program.cs" />
-    <Element value="ocr\get_string_from_ocr.cs" />
-    <Element value="utils\stop_sut.cs" />
   </Array>
   <Properties name="projectSavedData">
     <Properties name="customTool">

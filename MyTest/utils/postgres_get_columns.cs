@@ -44,7 +44,8 @@ namespace MyTest.utils
         void ITestModule.Run()
         {
         	//Ranorex.Report.Info("count columns: " + postgres.postgres_handler.count_columns_of_mytable());
-        	 postgres_handler.get_values_from_column();
+        	// postgres_handler.create_table_teachers();
+        	postgres_handler.get_async_values();
         }
     }
 }

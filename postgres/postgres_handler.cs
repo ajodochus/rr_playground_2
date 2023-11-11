@@ -19,6 +19,7 @@ using Ranorex.Core;
 using Ranorex.Core.Testing;
 
 using Npgsql;
+using System.Data;
 
 namespace postgres
 {
@@ -72,6 +73,50 @@ namespace postgres
 			await cmd.ExecuteNonQueryAsync();
 			con.Close();
 		}
+		
+		public static void get_async_values(){
+
+			string sql = @"SELECT first_name,last_name FROM teachers";
+			
+		NpgsqlConnection pgConnection= connect_to_db();
+			NpgsqlCommand pgCommand = new NpgsqlCommand(sql, pgConnection);
+			pgCommand.Connection.Open();
+			NpgsqlDataReader pgReader = pgCommand.ExecuteReader();
+			try
+			{
+				while(pgReader.Read())
+				{
+					Ranorex.Report.Info(pgReader.GetString(0));
+				}
+			}
+			finally
+			{
+				pgReader.Close();
+				pgConnection.Close();
+			}
+		}
+		
+		public static void read_values(){
+			NpgsqlConnection con = connect_to_db();
+			con.Open();
+			string sql = "SELECT * FROM teachers";
+			NpgsqlCommand cmd = new NpgsqlCommand(sql, con);
+
+			NpgsqlDataReader rdr = cmd.ExecuteReader();
+
+			while (rdr.Read())
+			{
+				Ranorex.Report.Info("name: " + rdr.GetString(0));
+				Ranorex.Report.Info("name: " + rdr.GetString(1));
+				
+			}
+			
+			con.Close();
+		}
+		
+		
+		// 
+
 		
 		private static NpgsqlConnection connect_to_db(){
 			string connstring = @"Server='127.0.0.1';Port='5432';User Id='postgres';Password='robert.123';Database='postgres';";

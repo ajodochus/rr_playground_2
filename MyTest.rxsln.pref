@@ -12,6 +12,6 @@
       <string>31c94dfd-a16b-49e6-9a0e-212ae9a66d9c</string>
     </ArrayOfString>
   </SerializedValue>
-  <ProjectBrowserState value="[Solution MyTest[MyTest[References[]]postgres[]]]&#xD;&#xA;Solution MyTest\postgres\postgres_handler.cs&#xD;&#xA;Solution MyTest\MyTest\References\Ranorex.Plugin.Qt" />
+  <ProjectBrowserState value="[Solution MyTest[MyTest[References[]]postgres[]]]&#xD;&#xA;Solution MyTest\MyTest\MyTest.rxtst&#xD;&#xA;Solution MyTest\MyTest\References\Ranorex.Plugin.Qt" />
   <StartupProject value="{81948032-649B-4542-9BF3-7072FFCCF8C0}" />
 </Properties>

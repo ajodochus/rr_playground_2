@@ -42,6 +42,12 @@
             instance to the <see cref="M:Ranorex.Core.Testing.TestModuleRunner.Run(Ranorex.Core.Testing.ITestModule)"/> method
             that will in turn invoke this method.</remarks>
         </member>
+        <member name="M:postgres.postgres_handler.get_value_with_attribues(System.String,System.String,System.String,System.String)">
+            <remarks>table</remarks>
+            <remarks>identifier_value</remarks>
+            <remarks>identifier_column</remarks>
+            <remarks>find_in_column</remarks>
+        </member>
         <member name="T:__RxMain.__RxProgram">
             <summary>
             Modified Program class that ensures that the Ranorex System gets initialized and cleaned up

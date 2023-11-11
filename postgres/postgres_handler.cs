@@ -74,11 +74,11 @@ namespace postgres
 			con.Close();
 		}
 		
-		public static void get_async_values(){
+		public static void get_all_first_and_last_names(){
 
 			string sql = @"SELECT first_name,last_name FROM teachers";
 			
-		NpgsqlConnection pgConnection= connect_to_db();
+			NpgsqlConnection pgConnection= connect_to_db();
 			NpgsqlCommand pgCommand = new NpgsqlCommand(sql, pgConnection);
 			pgCommand.Connection.Open();
 			NpgsqlDataReader pgReader = pgCommand.ExecuteReader();
@@ -87,6 +87,7 @@ namespace postgres
 				while(pgReader.Read())
 				{
 					Ranorex.Report.Info(pgReader.GetString(0));
+					Ranorex.Report.Info(pgReader.GetString(1));
 				}
 			}
 			finally
@@ -113,9 +114,33 @@ namespace postgres
 			
 			con.Close();
 		}
-		
-		
-		// 
+
+		///<remarks>table</remarks>
+		///<remarks>identifier_value</remarks>
+		///<remarks>identifier_column</remarks>
+		///<remarks>find_in_column</remarks>
+		public static void get_value_with_attribues(string table, string identifier_value, string identifier_column, string find_in_column){
+
+			string sql = @"SELECT "+find_in_column+" FROM "+table+" WHERE '"+identifier_value+"' IN ("+identifier_column+")";
+			//string sql = @"SELECT first_name FROM teachers WHERE 'quack' IN (last_name)";
+			
+			NpgsqlConnection pgConnection= connect_to_db();
+			NpgsqlCommand pgCommand = new NpgsqlCommand(sql, pgConnection);
+			pgCommand.Connection.Open();
+			NpgsqlDataReader pgReader = pgCommand.ExecuteReader();
+			try
+			{
+				while(pgReader.Read())
+				{
+					Ranorex.Report.Info(pgReader.GetString(0));
+				}
+			}
+			finally
+			{
+				pgReader.Close();
+				pgConnection.Close();
+			}
+		}
 
 		
 		private static NpgsqlConnection connect_to_db(){

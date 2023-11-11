@@ -45,7 +45,8 @@ namespace MyTest.utils
         {
         	//Ranorex.Report.Info("count columns: " + postgres.postgres_handler.count_columns_of_mytable());
         	// postgres_handler.create_table_teachers();
-        	postgres_handler.get_async_values();
+        	//postgres_handler.get_all_first_and_last_names();
+        	postgres_handler.get_value_with_attribues("teachers", "quack", "last_name", "first_name");
         }
     }
 }

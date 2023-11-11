@@ -4,3 +4,4 @@ MyTest/obj/
 postgres/obj/
 postgres/postgres.csproj.rxuser
 postgres/postgres.csproj.pref
+target_app_for_ocr_test/target_app_for_ocr_test/obj/

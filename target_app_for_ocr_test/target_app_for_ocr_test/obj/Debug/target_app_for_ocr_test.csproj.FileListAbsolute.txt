@@ -31,3 +31,5 @@ D:\projects\playground\rr_playground_2\target_app_for_ocr_test\target_app_for_oc
 D:\projects\playground\rr_playground_2\target_app_for_ocr_test\target_app_for_ocr_test\obj\Debug\target_app_for_ocr_test.csproj.CopyComplete
 D:\projects\playground\rr_playground_2\target_app_for_ocr_test\target_app_for_ocr_test\obj\Debug\target_app_for_ocr_test.exe
 D:\projects\playground\rr_playground_2\target_app_for_ocr_test\target_app_for_ocr_test\obj\Debug\target_app_for_ocr_test.pdb
+D:\projects\playground\rr_playground_2\target_app_for_ocr_test\target_app_for_ocr_test\obj\Debug\target_app_for_ocr_test.usercontrols.uc1.resources
+D:\projects\playground\rr_playground_2\target_app_for_ocr_test\target_app_for_ocr_test\obj\Debug\target_app_for_ocr_test.usercontrols.uc2.resources

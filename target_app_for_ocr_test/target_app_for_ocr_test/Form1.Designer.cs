@@ -30,12 +30,14 @@ namespace target_app_for_ocr_test
         private void InitializeComponent()
         {
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mydg = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.panel1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mydg)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox2
@@ -47,58 +49,75 @@ namespace target_app_for_ocr_test
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::target_app_for_ocr_test.Properties.Resources.ocr_test_hello_world;
-            this.pictureBox1.Location = new System.Drawing.Point(377, 406);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(402, 129);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // mydg
             // 
             this.mydg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.mydg.Location = new System.Drawing.Point(12, 12);
+            this.mydg.Location = new System.Drawing.Point(393, 293);
             this.mydg.Name = "mydg";
-            this.mydg.Size = new System.Drawing.Size(972, 242);
+            this.mydg.Size = new System.Drawing.Size(558, 242);
             this.mydg.TabIndex = 4;
             this.mydg.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mydg_CellContentClick);
             // 
-            // button1
+            // panel1
             // 
-            this.button1.Location = new System.Drawing.Point(666, 350);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.panel1.Location = new System.Drawing.Point(29, 41);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(170, 236);
+            this.panel1.TabIndex = 5;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.panel1ToolStripMenuItem,
+            this.panel2ToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(996, 24);
+            this.menuStrip1.TabIndex = 6;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // panel1ToolStripMenuItem
+            // 
+            this.panel1ToolStripMenuItem.Name = "panel1ToolStripMenuItem";
+            this.panel1ToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.panel1ToolStripMenuItem.Text = "panel 1";
+            this.panel1ToolStripMenuItem.Click += new System.EventHandler(this.panel1ToolStripMenuItem_Click);
+            // 
+            // panel2ToolStripMenuItem
+            // 
+            this.panel2ToolStripMenuItem.Name = "panel2ToolStripMenuItem";
+            this.panel2ToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.panel2ToolStripMenuItem.Text = "panel 2";
+            this.panel2ToolStripMenuItem.Click += new System.EventHandler(this.panel2ToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(996, 547);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.mydg);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mydg)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.DataGridView mydg;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem panel1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem panel2ToolStripMenuItem;
     }
 }
 

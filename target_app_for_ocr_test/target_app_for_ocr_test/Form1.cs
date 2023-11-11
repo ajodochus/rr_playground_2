@@ -12,9 +12,13 @@ namespace target_app_for_ocr_test
 {
     public partial class Form1 : Form
     {
+        navi_control navigationcontrol;
         public Form1()
         {
             InitializeComponent();
+            initialize_navi_controls();
+
+
             var lines = File.ReadAllLines(".\\data.csv");
             var list = new List<Contact>();
             foreach (var line in lines)
@@ -29,9 +33,18 @@ namespace target_app_for_ocr_test
             mydg.DataSource = list;
         }
 
+        private void initialize_navi_controls()
+        {
+            List<UserControl> usercontrols = new List<UserControl>()
+            { new usercontrols.uc1(), new usercontrols.uc2() };
+
+            navigationcontrol = new navi_control(usercontrols, panel1);
+            navigationcontrol.Display(0);
+        }
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+           
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -52,6 +65,16 @@ namespace target_app_for_ocr_test
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void panel1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            navigationcontrol.Display(0);
+        }
+
+        private void panel2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            navigationcontrol.Display(1);
         }
     }
 }

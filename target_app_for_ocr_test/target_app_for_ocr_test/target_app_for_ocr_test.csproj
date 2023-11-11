@@ -126,11 +126,24 @@
       <id>aedc35eb-9492-400b-9613-40e21350c17c</id>
       <BoundTo>31455379-8a54-4899-b087-cc820fc468ea</BoundTo>
     </Compile>
+    <Compile Include="navi_control.cs" />
     <Compile Include="Program.cs">
       <id>5c3683a1-ea36-4b7b-b8f1-501dc9407d5b</id>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <id>524f2b65-e552-4f2b-92bc-e3a08204cb6e</id>
+    </Compile>
+    <Compile Include="usercontrols\uc1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="usercontrols\uc1.Designer.cs">
+      <DependentUpon>uc1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\uc2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="usercontrols\uc2.Designer.cs">
+      <DependentUpon>uc2.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -150,6 +163,12 @@
       <id>aa2961bf-76ad-4483-9077-cff651e00197</id>
       <BoundTo>1fa2f4e2-0dcc-4908-9933-2f5591c61a1a</BoundTo>
     </Compile>
+    <EmbeddedResource Include="usercontrols\uc1.resx">
+      <DependentUpon>uc1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="usercontrols\uc2.resx">
+      <DependentUpon>uc2.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
